@@ -1,0 +1,107 @@
+/* Article List */
+.article-list--more {
+    padding-top: 35px;
+    text-align: center;
+
+    #search--form {
+        @include make-lg-column(8);
+        @include make-lg-column-offset(2);
+    }
+}
+
+/*.article-list--item {
+    .details {
+        font-size: 0.889rem;
+        color: var(--subtitle-color);
+
+        * {
+            margin-right: 5px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        
+        .comments {
+            color: $orange;
+        }
+    }
+
+    &-list {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $border;
+
+        &:first-of-type {
+            padding-top: 0;
+        }
+
+        img {
+            float: right;
+            margin: 0 0 10px 10px;
+            width: 150px;
+        }
+    }
+
+    &-card {
+        .card {
+            position: relative;
+            margin: 0 auto 15px;
+            height: 300px;
+            max-width: 260px;
+            overflow: hidden; 
+            background: $white;
+            border: 1px solid $border;
+            border-top: 0px none;
+
+            img {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+            }
+
+            .content {
+                position: relative;
+                padding: 6px 10px; 
+                background: $white;
+                border-top: 3px solid $orange;
+
+                .category {
+                    margin-bottom: 5px;
+                    font-size: 0.889rem;
+                }
+            }
+
+            .details {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                padding: 6px 10px;
+                width: 100%;
+                background: $white;
+                z-index: 9;
+            }
+
+            &.img {
+                border-top: 1px solid $border;
+
+                .content {
+                    margin-top: 128px;
+
+                    .category {
+                        position: absolute;
+                        top: -30px;
+                        left: 10px;
+                        margin-bottom: 0;
+                        padding: 5px 10px;
+                        height: 30px;
+                        color: $white;
+                        background: $orange;
+                    }
+                }
+            }
+        }
+    }
+}*/

@@ -1,0 +1,79 @@
+/* -----------------
+   Colors 
+   ----------------- */
+
+$white: #fff;
+$white_grey: #d7d7d7;
+$white_grey_shadow: #b7b7b7;
+
+$black: #212121;
+$black_grey: #3f3f3f;
+$black_grey_shadow: #0a0a0a;
+
+$subtitle_dark: #a0a0a0;
+$subtitle_light: #6e6e6e;
+
+$accent_yellow_dark: #fff176;
+$accent_purple_dark: #9575cd;
+$accent_blue_dark: #00a3ad; // Lake Herrick
+$accent_red_dark: #e57373;
+$accent_green_dark: #aed581;
+$accent_orange_dark: #ffb74d;
+
+$accent_yellow_light: #fbc02d;
+$accent_purple_light: #512da8;
+$accent_blue_light: #004e60; // Olympic
+$accent_red_light: #ba0c2f; // Bulldog Red
+$accent_green_light: #689f38;
+$accent_orange_light: #f57c00;
+
+$link_dark: $accent_red_dark;
+$link_light: $accent_red_light;
+
+$facebook: #3b5998;
+$twitter: #1da1f2;
+
+// Special colors selected from the University of Georgia Visual Style Guide
+// (Those with names commented to right)
+// See https://brand.uga.edu/visual-style/#color
+// See https://material.io/design/color/the-color-system.html#tools-for-picking-colors for other palettes
+// Generally, I select 300 colors for dark theme and 700 for light theme
+
+:root,
+:root[data-theme="dark"] {
+	--accent-blue: #{$accent_blue_dark};
+	--accent-purple: #{$accent_purple_dark};
+	--accent-red: #{$accent_red_dark};
+	--accent-yellow: #{$accent_yellow_dark};
+	--accent-green: #{$accent_green_dark};
+	--accent-orange: #{$accent_orange_dark};
+	--background: #{$black};
+	--surface: #{$black_grey};
+	--surface-shadow: #{$black_grey_shadow};
+	--surface-accent: #{$accent_blue_dark};
+	--header-color: #{$white};
+	--subtitle-color: #{$subtitle_dark};
+    --text-color: #{$white_grey};
+    --link-color: #{$link_dark};
+    --inactive-text-color: #{#adadad};
+}
+
+:root[data-theme="light"] {
+	--accent-blue: #{$accent_blue_light};
+	--accent-purple: #{$accent_purple_light};
+	--accent-red: #{$accent_red_light};
+	--accent-yellow: #{$accent_yellow_light};
+	--accent-green: #{$accent_green_light};
+	--accent-orange: #{$accent_orange_light};
+	--background: #{$white};
+	--surface: #{$white};
+	--surface-shadow: #{$white_grey_shadow};
+	--surface-accent: #{$accent_blue_light};
+	--header-color: #{$black};
+	--subtitle-color: #{$subtitle_light};
+	--text-color: #{$black};
+	--link-color: #{$link_light};
+	--inactive-text-color: #{#696969};
+}
+
+

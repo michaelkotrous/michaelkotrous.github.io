@@ -1,0 +1,130 @@
+/* -----------------
+   Typography 
+   ----------------- */
+
+html,
+body { 
+    margin: 0; 
+    padding: 0;
+    color: var(--text-color);
+    font-family: "Libre Baskerville", serif;
+    font-size: 16px; // use ems relative to 16px hereafter
+    line-height: 1.4;
+    background: var(--background);
+}
+
+h1,h2,h3,h4,h5,h6 { 
+    margin-top: 0;
+    font-family: "Montserrat", sans-serif; 
+    font-weight: 700;
+    color: var(--header-color);
+}
+
+.serif {
+    font-family: "Libre Baskerville", serif;
+}
+.condensed {
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+pre, code {
+    font-family: "Courier New", Courier, monospace;
+}
+
+table thead th {
+    font-family: "Montserrat", sans-serif; 
+    font-weight: 700;
+    color: var(--header-color);
+}
+
+/* Headings */
+h1, h2, .title {
+    margin-bottom: 15px;
+}
+h3, h4, h5, h6 {
+    margin-bottom: 5px;
+}
+
+.title {
+    margin-top: 10px;
+    font-size: 2.4rem;
+
+    + .subtitle {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--subtitle-color);
+    }
+}
+
+h1 {
+    font-size: 2.4rem;
+
+    @media (max-width: $screen-sm-min) {
+        font-size: 2.0rem;
+    }
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+
+/* Block-level Elements */
+p { 
+    margin: 0 0 15px;
+}
+
+ol,ul {
+    margin: 0 0 15px;
+
+    li {
+        margin: 0 0 8px;
+
+        ul {
+            margin: 4px 0 0;
+        }
+        ol {
+            margin: 4px 0 0;
+        }
+    }
+}
+
+table {
+    margin: 0 0 15px;
+    border-spacing: 0px;
+    border-top: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+
+    thead th {
+        border-bottom: 1px solid var(--text-color);
+    }
+
+    td, th {
+        padding: 5px 8px;
+        vertical-align: top;
+    }
+}
+
+pre {
+    margin: 0 0 15px;
+    max-width: 100%;
+    overflow: auto;
+}
+
+.category {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+/* Inline Styles */
+a { 
+    text-decoration: underline; 
+    color: inherit;
+}

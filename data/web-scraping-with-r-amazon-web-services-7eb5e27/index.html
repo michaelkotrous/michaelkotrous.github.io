@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/main.js"></script>
+    <title>Michael Kotrous</title>
+</head>
+
+
+<body class="article">
+<header>
+    <div class="container-fluid container-fluid--md">
+        <div class="row header">
+            <div class="header-content">
+                <div class="toggle"><a href="#" id="theme_toggle">&#x1F4A1;</a></div>
+                <h1 class="header-content--title"><a href="/">Michael Kotrous</a></h1>
+                <div class="menu">
+                    <ul>
+                        <li><a href="/research">Research</a></li>
+                        <li><a href="/teaching">Teaching</a></li>
+                        <li class="menu-item--active"><a href="/data">Data</a></li>
+                        <li><a href="/uploads/Kotrous-CV.pdf" target="_blank">CV</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+            
+<section id="article">
+    <div class="container-fluid container-fluid--md">
+        <div class="row article-head">
+            <div class="article-head--content">
+                <h2 class="title">Web Scraping with R &amp; Amazon Web Services</h2>
+                                    <h3 class="subtitle">A Case Study in Collecting FAA Temporary Flight Restriction (TFR) Data</h3>
+                            </div>
+        </div>
+                    <div class="row article-hero">
+                                    <div class="ascii-art">
+                        <pre>
+                            
+                              |
+                              |
+______________________________|_______________________________
+                    ----\--||___||--/----
+                         \ :==e==: /
+                          \|  o  |/
+                           \_____/
+                           /  |  \
+                         e/   e   \e
+                         U    U    U
+                                            </pre>
+                    </div>
+                            </div>
+                <div class="row article-content ">
+                            <div class="article-content--sidebar article-content--sidebar-sticky">
+                    <div class="article-content--sidebar--block article-content--sidebar--toc">
+                        <h4>Skip Around</h4>
+                        <ol class="article-content--sidebar--block--list article-content--sidebar--toc--list">
+                            <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#createanawscloudcomputingec2instance">Create an AWS Cloud Computing (EC2) Instance</a></li>
+                        <li><a href="#createans3buckettostoreandpubliclylistyourdata">Create an S3 Bucket to Store and Publicly List Your Data</a></li>                        </ol>
+                    </div>
+                </div>
+                        <div class="article-content--body">
+                <!-- For easy conversion of HTML to JSON string, see https://www.freeformatter.com/json-escape.html-->
+                <p id="introduction">
+R’s XML package is a powerful tool for generating datasets by “scraping” the text of HTML and XML documents. Converting webpage data into a dataframe you can work with in R is very simple for websites that format their data cleanly using HTML tables.
+</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>tables &lt;-<span class="st"> </span><span class="kw">readHTMLTable</span>(url)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>table &lt;-<span class="st"> </span>tables[[n]]</span></code></pre></div>
+<p>The <code>readHTMLTable</code> function turns all HTML tables found at the given URL into separate dataframes in R, so you have to comb through the output to determine which table you wish to use for analysis (in the example above, <code>table</code> is set as the nth table scraped from the webpage).</p>
+<p>This is quite convenient for cases where the data of interest is unchanging, updated infrequently, or future updates don’t matter for the analysis you plan to run. Simply running the scrape once on your desktop suffices to gather the data you want. Consider these examples:</p>
+<ul>
+<li>Individual medalist and country medal <a href="https://www.sports-reference.com/olympics/summer/2000/">counts</a> for the 2000 Sydney Olympic Games.</li>
+<li>Wins-above-replacement (WAR) leader in the AL and NL each year between 1917 and 2016. (<a href="https://www.baseball-reference.com/leaders/WAR_bat_leagues.shtml">Baseball Reference</a>)</li>
+<li>All-time movie box office rankings, gross receipts adjusted for inflation. (<a href="http://www.boxofficemojo.com/alltime/adjusted.htm">Box Office Mojo</a>)</li>
+<li>Weekly Apple stock prices between Jan. 1, 2005 and Dec. 31, 2012. (<a href="https://finance.yahoo.com/quote/AAPL/history?period1=1104555600&amp;period2=1356930000&amp;interval=1wk&amp;filter=history&amp;frequency=1wk">Yahoo Finance</a>)</li>
+</ul>
+<p>However, a more robust web scraping solution is needed when the data is updated regularly, and we would like to capture all these updates. Consider two such cases that I’ve encountered:</p>
+<ul>
+<li>Updating daily data on home runs hit in MLB games during the ongoing season. Perhaps I would like to generate an email each morning detailing the home runs the New York Mets hit in the previous night’s game. (<a href="http://www.hittrackeronline.com/index.php">ESPN Home Run Tracker</a>)</li>
+<li>Aggregating data on all temporary flight restrictions (TFRs) issued by the FAA. (<a href="http://tfr.faa.gov/tfr2/list.jsp">FAA</a>)</li>
+</ul>
+<p>Updating the dataset manually is unrealistic, unreliable, and time-consuming, so we need to operate the web scraping scripts in an environment such that:</p>
+<ol type="1">
+<li>the device has a persistent Internet connection, and</li>
+<li>the device can execute the web scrape and other functions automatically at specified intervals, or frequency.</li>
+</ol>
+<p>The specific problem I took on was running an hourly web scrape of the FAA’s active TFR list. The R and Shell code I run to execute these scrapes is available in a <a href="https://github.com/michaelkotrous/tfr-data">Github repo</a>.</p>
+<p>The hosting solution I found was using Amazon Web Service’s Elastic Cloud Computing (EC2) service. Under the <a href="https://aws.amazon.com/free/">AWS free tier</a>, I can run an EC2 Linux instance configured to run the web scrapes in R each hour and kick the output data to an AWS S3 bucket. All this is can be done for free, or at very minimal cost.</p>
+<p>If you have not set up an AWS account, you can create one and be eligible to take advantage of the AWS free tier for 12 months!</p>
+<p>The rest of this post outlines the process of setting up the EC2 instance with R and the dependencies you will need to run the code in my <code>tfr-data</code> Github repo, or a web scraper of your own!</p>
+<h3 id="createanawscloudcomputingec2instance">
+Create an AWS Cloud Computing (EC2) Instance
+</h3>
+<p>In AWS EC2 console interface, you will walk through creating an EC2 instance. Here are my notes, numbered in correspondence with the steps of the interface.</p>
+<ol type="1">
+<li>Amazon Linux, free tier eligible. I think there’s no right answer, but R is very easy to install and configure in Linux. If you have any experience with Linux or Mac OS Terminal, then you’ll feel at home in this setup.</li>
+<li>The <code>t2.micro</code> instance is the only one that is free-tier eligible. Unless you’re running a scrape that will be processing gigabytes upon gigabytes of data, this should be adequate.</li>
+<li>Select IAM role. This will be necessary if you wish to set up a user that can read and write your data output to an S3 bucket. If you do wish to integrate S3 (recommended), please skip down to the S3 setup section below to set this up right.</li>
+<li>There’s probably no need to add more storage to your instance, and I’m not sure how any changes will affect your free-tier eligibility.</li>
+<li>Create tags as you see fit.</li>
+<li>The security group controls the traffic that can navigate to your EC2 instance, which I expand on directly below.</li>
+</ol>
+<h4 id="security-group">Security Group</h4>
+<p>These settings will vary greatly across users, depending on if they are hosting a web application, or using a Linux instance to compile data like I have. This <a href="https://aws.amazon.com/blogs/big-data/running-r-on-aws/">AWS blog post</a> discusses using RStudio and Shiny to create data visualizations that are accessible via web browser, so thats good reference for setting up your security group if you wish to go that route.</p>
+<p>In my case, I only allow traffic via SSH, with the IP address set to that of my personal device. If you need to access the EC2 instance from multiple devices or locations (home and office), simply create new rules of type SSH to allow multiple IP addresses to connect.</p>
+<h4 id="private-public-key-pair-aws-doc">Private-Public Key Pair (<a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">AWS Doc</a>)</h4>
+<p>Before you launch your EC2 instance, you will have generated a private-public key pair that you will be required to have when connecting to your EC2 instance (it will be downloaded with the <code>.pem</code> extension). With the key in hand, you connect to your launched EC2 instance like so:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a>$ <span class="fu">ssh</span> -i /path/my-key-pair.pem ec2-user@public-dns-IPv4</span></code></pre></div>
+<p>The <code>-i</code> option specifies the path to the <code>.pem</code> key-pair file, which is necessary to verify your authority to access the server. The IPv4 public DNS can be copied-and-pasted from the EC2 console.</p>
+<p>Once connected, you’ll see the following in your Terminal window:</p>
+<pre><code>   __|  __|_  )
+   _|  (     /   Amazon Linux AMI
+  ___|\___|___|</code></pre>
+<h4 id="installing-r-and-other-dependencies">Installing R and other Dependencies</h4>
+<p>Now that the instance is launched and configured, the next step is to install dependencies not preloaded onto the server. The technologies on which the XML package depends for its web scraping capabilities are usually preconfigured on Mac and Windows devices, but we’re not so lucky with the Linux AMI.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a>$ <span class="fu">sudo</span> yum install -y libcurl-devel</span>
+<span id="cb4-2"><a href="#cb4-2"></a>$ <span class="fu">sudo</span> yum install -y openssl-devel</span>
+<span id="cb4-3"><a href="#cb4-3"></a>$ <span class="fu">sudo</span> yum install -y libxml2-devel</span>
+<span id="cb4-4"><a href="#cb4-4"></a>$ <span class="fu">sudo</span> yum install -y R</span></code></pre></div>
+<p>Henceforth, simply typing the command <code>R</code> will launch the R application, and the interface in your Terminal window will be very familiar to that of your desktop application. The same commands work, and you can write your R script just like you would in your Mac or Windows desktop environment.</p>
+<p>You’ll need to install the XML, RCurl, and httr R packages manually, which are required for my <a href="https://github.com/michaelkotrous/tfr-data">FAA TFR scrapes</a> and will likely be needed for yours. The need for XML is apparent. RCurl fetches the XML text from the web, which corrects a fatal error introduced after the FAA’s webpage began using the https prefix. The httr package has a nice function that allows you to check that a URL exists before you try scraping data from it with the XML package’s functions, which caused fatal errors for me. (Refer to the R script in the <a href="https://github.com/michaelkotrous/tfr-data/blob/master/scripts/FAA-TFR-scraper.R"><code>tfr-data</code> repo</a> for details).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">chooseCRANmirror</span>()</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># select mirror with integer response</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">install.packages</span>(<span class="st">&quot;XML&quot;</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;RCurl&quot;</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>, <span class="dt">dependencies=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<p>At the end of the install process for <code>httr</code>, you’ll see a warning message like this:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>Warning messages<span class="op">:</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="dv">1</span><span class="op">:</span><span class="st"> </span>In <span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>) <span class="op">:</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="st">  </span>installation of package ‘jpeg’ had non<span class="op">-</span>zero exit status</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="dv">2</span><span class="op">:</span><span class="st"> </span>In <span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>) <span class="op">:</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="st">  </span>installation of package ‘png’ had non<span class="op">-</span>zero exit status</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="dv">3</span><span class="op">:</span><span class="st"> </span>In <span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>) <span class="op">:</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="st">  </span>installation of package ‘readr’ had non<span class="op">-</span>zero exit status</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="dv">4</span><span class="op">:</span><span class="st"> </span>In <span class="kw">install.packages</span>(<span class="st">&quot;httr&quot;</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>) <span class="op">:</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="st">  </span>installation of package ‘xml2’ had non<span class="op">-</span>zero exit status</span></code></pre></div>
+<p>These can be disregarded for my use case, so I expect you won’t need to install the <code>jpeg</code> and <code>png</code> libraries to run your web scraping tool either.</p>
+<p>Now you can upload files, like your R code, to the server in order to perform the scrape with <code>scp</code> (secure copy).</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a>$ <span class="fu">scp</span> -i /path/my-key-pair.pem /path/to/file.R ec2-user@public-dns-IPv4:~</span></code></pre></div>
+<p>Finally, to automate the script to run each hour, add a cron task with command <code>crontab -e</code>. You may need to add <code>sudo</code> before <code>R</code> to prevent errors.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="va">MAILTO=</span>email</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="ex">0</span> * * * * R CMD BATCH /home/ec2-user/file.R</span></code></pre></div>
+<p>The script will run the R file every hour, and print the output in an email. The emails can be annoying, but it makes for an excellent debugging tool in case unexpected issues arise within the first few days of the script running. Setting a filter to move these hourly updates to a folder lessens the annoyance considerably. Simply remove the <code>MAILTO</code> line to stop the emails.</p>
+<h3 id="createans3buckettostoreandpubliclylistyourdata">
+Create an S3 Bucket to Store and Publicly List Your Data
+</h3>
+<p>S3 is AWS’s “Simple Storage Service.” It too is free-tier eligible, and it is incredibly affordable after the limited-time offer expires. Using S3 has an advantage over storing the data on your EC2 instance.</p>
+<ol type="1">
+<li><strong>Redundancy:</strong> Copying the data you’ve compiled to S3 will protect you in the event that the EC2 instance you’ve created is shut down and access to its files is lost.</li>
+<li><strong>Security:</strong> You want to limit access to your EC2 instance as much as possible. Depending on your security group settings, you may only be able to connect to your server by secure shell if and only if you hold the corresponding private-public key pair and your IP address has been allowed under the security group settings. Opening up the EC2 to try to allow anonymous users to access your dataset greatly increases your “attack surface” for those who may want to get access to other items or take control of your EC2 instance.</li>
+<li><strong>Transparency:</strong> Rather than relying on you to hand over your data, reviewers, colleagues, and readers can go download the latest copy of your dataset themselves from your S3 bucket, if they would like to run new tests or attempt to replicate your results.</li>
+</ol>
+<h4 id="connecting-ec2-and-s3-with-an-iam-role">Connecting EC2 and S3 with an IAM Role</h4>
+<p>When assigning an IAM role for your EC2 instance, you want to have a role that can read and write data to the S3 bucket which you will use to store your data. You can accomplish this by assigning the <code>AmazonS3FullAccess</code> policy to that user, but this policy allows the role to read and write to any S3 bucket under your AWS account.</p>
+<p>A cleaner and less-risky policy can be created custom by lightly editing the JSON code below to match your new role’s desired settings. This code allows the user to list the content of <code>your-bucket</code> and add, edit, and delete items in <code>your-bucket</code> specifically.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>    <span class="dt">&quot;Version&quot;</span><span class="fu">:</span> <span class="st">&quot;2012-10-17&quot;</span><span class="fu">,</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>    <span class="dt">&quot;Statement&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>        <span class="fu">{</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>            <span class="dt">&quot;Effect&quot;</span><span class="fu">:</span> <span class="st">&quot;Allow&quot;</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a>            <span class="dt">&quot;Action&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>                <span class="st">&quot;s3:ListBucket&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>            <span class="dt">&quot;Resource&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>                <span class="st">&quot;arn:aws:s3:::your-bucket&quot;</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>            <span class="ot">]</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>        <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a>        <span class="fu">{</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a>            <span class="dt">&quot;Effect&quot;</span><span class="fu">:</span> <span class="st">&quot;Allow&quot;</span><span class="fu">,</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>            <span class="dt">&quot;Action&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>                <span class="st">&quot;s3:PutObject&quot;</span><span class="ot">,</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>                <span class="st">&quot;s3:GetObject&quot;</span><span class="ot">,</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a>                <span class="st">&quot;s3:DeleteObject&quot;</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a>            <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>            <span class="dt">&quot;Resource&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>                <span class="st">&quot;arn:aws:s3:::your-bucket/*&quot;</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a>            <span class="ot">]</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a>        <span class="fu">}</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a>    <span class="ot">]</span></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="fu">}</span></span></code></pre></div>
+<p>Once the role is correctly configured, you just need to check that this role is assigned to your EC2 instance under IAM role.</p>
+<p>You can now use the AWS command line tools (preinstalled on the Linux AMI) in order to sync the files on your EC2 instance with those in your S3 bucket. You can add this to the front and end of your cron task to automate the syncs between S3 and EC2.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">0</span> * * * * aws s3 sync s3://your-bucket /home/ec2-user/s3-export <span class="kw">&</span><span class="kw">&</span><span class="ex"> R</span> CMD BATCH /home/ec2-user/file.R <span class="kw">&</span><span class="kw">&</span> <span class="ex">aws</span> s3 sync /home/ec2-user/s3-export s3://your-bucket</span></code></pre></div>
+<p>The first S3 sync takes <em>all</em> the folder and files in your-bucket and updates the files local to your EC2 instance at the specified path. The second S3 sync updates the files in your bucket to match the data on your EC2 instance, which should be updated to reflect the most recent run of the web scraping script.</p>
+<p>The purpose of the <code>&amp;&amp;</code> in the cron file is to set the order of the functions run. It also stops the process if at any point, one of the functions throws a fatal error.</p>
+<h4 id="make-your-data-public">Make Your Data Public</h4>
+<p>In the S3 Management Console, you can customize the permissions of your bucket to allow anyone to read the files (or specific files) in your bucket under the “Permissions” tab in the bucket’s settings. It’s important that we only allow give anonymous users read access to the bucket. If anyone can write new files to the bucket, overwrite existing files, delete items from the bucket, or manage its user and permission settings, then you are exposed to run into problems malicious or accidental.</p>
+<p>Further, the default read-only access you can give to everyone under “Access Control List” allows anyone to list the contents of your bucket by navigating to the base URL. This may be problematic, so you set custom permissions under “Bucket Policy” that allow anyone to read or download the files of your choosing without exposing all the files in your bucket to the public eye.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">{</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>    <span class="dt">&quot;Version&quot;</span><span class="fu">:</span> <span class="st">&quot;2008-10-17&quot;</span><span class="fu">,</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="dt">&quot;Id&quot;</span><span class="fu">:</span> <span class="st">&quot;http better policy&quot;</span><span class="fu">,</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="dt">&quot;Statement&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>        <span class="fu">{</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>            <span class="dt">&quot;Sid&quot;</span><span class="fu">:</span> <span class="st">&quot;readonly policy&quot;</span><span class="fu">,</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>            <span class="dt">&quot;Effect&quot;</span><span class="fu">:</span> <span class="st">&quot;Allow&quot;</span><span class="fu">,</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>            <span class="dt">&quot;Principal&quot;</span><span class="fu">:</span> <span class="st">&quot;*&quot;</span><span class="fu">,</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>            <span class="dt">&quot;Action&quot;</span><span class="fu">:</span> <span class="st">&quot;s3:GetObject&quot;</span><span class="fu">,</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>            <span class="dt">&quot;Resource&quot;</span><span class="fu">:</span> <span class="st">&quot;arn:aws:s3:::your-bucket/*&quot;</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>        <span class="fu">}</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>    <span class="ot">]</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="fu">}</span></span></code></pre></div>
+<p>Principal <code>*</code> means anyone. Note that you can change <code>Resource</code> to assign a specific file path or paths. By this current configuration, anyone can read any file in <code>your-bucket</code>, but he or she cannot list all the contents of <code>your-bucket</code>. Bucket policies can be easily debugged by plugging URLs to your bucket into your browser to see if the desired results are achieved.</p>
+            </div>
+            <div class="article-content--sidebar">
+                <div class="article-content--sidebar--block article-content--sidebar--detail">
+                    <h4>About</h4>
+                    <div class="article-content--sidebar--detail--content">
+                        <img src="/img/MichaelKotrous-UGA-square-web240.jpg" />
+                        By Michael Kotrous<br />
+                        <a href="http://twitter.com/MichaelKotrous" target="_blank">@MichaelKotrous</a><br />
+                        Posted Oct 10, 2017<br />
+                        2:03 p.m.                                            </div>
+                </div>
+                                    <div class="article-content--sidebar--block article-content--sidebar--image-credits">
+                        <h4>Image Credits</h4>
+                        <ol class="article-content--sidebar--block--list">
+                            <li>Cover: <a href="http://xcski.com/~ptomblin/planes.txt" target="_blank">Andy Stadler</a></li>                        </ol>
+                    </div>
+                            </div>
+                            <div class="article-content--sidebar article-content--sidebar-sticky article-content--sidebar--block article-content--sidebar--social">
+                    <h4>Share</h4>
+                    <div class="social-icons">
+                                                <div class="social facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.michaelkotro.us%2Fposts%2Fweb-scraping-with-r-amazon-web-services-7eb5e27" target="_blank">Facebook</a></div> 
+                        <div class="social twitter"><a href="https://twitter.com/intent/tweet?text=Web+Scraping+with+R+%26+Amazon+Web+Services&url=https%3A%2F%2Fwww.michaelkotro.us%2Fposts%2Fweb-scraping-with-r-amazon-web-services-7eb5e27" target="_blank">Twitter</a></div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+    <section id="article-afterward">
+        <div class="article-list">
+            <div class="container-fluid container-fluid--md">
+                                <div class="row">
+                    <div class="cards-wrapper">
+                                            <div class="article-list--item article-list--item-card">
+                            <div class="card repo">
+                                <div class="card--content">
+                                                                        <h3 class="card--content--title"><a href="https://github.com/michaelkotrous/tfr-data" target="_blank">tfr-data</a></h3>
+                                    <p class="card--content--summary">Web scraping tool for collecting FAA Temporary Flight Restrictions data</p>
+                                    <div class="card--content--details repo--languages">
+                                                                                                                                    <span class="r">R</span>
+                                                                                            <span class="shell">Shell</span>
+                                                                                                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="article-list--item article-list--item-card">
+                            <div class="card article">
+                                <div class="card--content">
+                                                                        <h3 class="card--content--title"><a href="/data/downloading-faa-tfr-data-e20d56a">Downloading FAA TFR Data</a></h3>
+                                    <p class="card--content--summary">Download the data and shapefiles collected by my FAA TFR scraper</p>
+                                    <div class="card--content--details">
+                                         
+                                            <span class="date">Apr 8, 2019</span>
+                                                                                                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+<footer>
+    <div class="container-fluid container-fluid--md">
+        <div class="row footer">
+            <div class="footer-content">
+                <p class="copyright">Copyright &copy; 2024 by Michael Kotrous</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

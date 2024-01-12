@@ -1,0 +1,103 @@
+/* Create classes for Twitter bootstrap grid for layouts */
+.container-fluid {
+    &--sm {
+        max-width: $screen-sm-min;
+    }
+    &--md {
+        max-width: $screen-md-min;
+    }
+    &--lg {
+        max-width: $screen-lg-min;
+    }
+}
+
+.full-width {
+    @include make-sm-column(12);
+}
+
+/* Base grid layout */
+.header-content {
+    @include make-sm-column(12);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-content {
+    @include make-sm-column(12);
+}
+
+/* Homepage grid layout */
+.homepage-content--bio {
+    &--profile {
+        @include make-sm-column(5);
+    }
+    &--summary {
+        @include make-sm-column(7);
+    }
+}
+.homepage-content--research,
+.homepage-content--charts,
+.homepage-content--commentary,
+.homepage-content--dev {
+    @include make-sm-column(12);
+}
+
+/* Cards in Flexbox */
+.cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.homepage-content--dev--item-card,
+.homepage-content--charts--item-card,
+.article-list--item-card {
+    display: flex;
+    width: 50%;
+    padding: 0 calc($grid-gutter-width/2);
+
+    @media (max-width: $screen-sm-min) {
+        width: 100%;
+    }
+}
+
+/* Article grid layout */
+.article-head {
+    &--content {
+        @include make-md-column(8);
+        @include make-md-column-offset(2);
+    }
+}
+
+.article-content {
+    &--sidebar {
+        @include make-md-column(2);
+    }
+    &--body {
+        @include make-md-column(8);
+
+        .article-content.no-toc & {
+            @include make-md-column-offset(2);
+        }
+    }
+}
+
+#comments {
+    @include make-lg-column(8);
+    @include make-lg-column-offset(2);
+}
+
+.search {
+    &-head--content {
+        @include make-lg-column(8);
+        @include make-lg-column-offset(2);
+    }
+    &-content {
+        &--filters {
+            @include make-lg-column(2);
+        }
+        &--results {
+            @include make-lg-column(8);
+        }
+    }
+}
+

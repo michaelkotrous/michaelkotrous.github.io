@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;700&family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link href="/css/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/main.js"></script>
+    <title>Michael Kotrous</title>
+</head>
+
+
+<body class="article">
+<header>
+    <div class="container-fluid container-fluid--md">
+        <div class="row header">
+            <div class="header-content">
+                <div class="toggle"><a href="#" id="theme_toggle">&#x1F4A1;</a></div>
+                <h1 class="header-content--title"><a href="/">Michael Kotrous</a></h1>
+                <div class="menu">
+                    <ul>
+                        <li><a href="/research">Research</a></li>
+                        <li><a href="/teaching">Teaching</a></li>
+                        <li class="menu-item--active"><a href="/data">Data</a></li>
+                        <li><a href="/uploads/Kotrous-CV.pdf" target="_blank">CV</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+            
+<section id="article">
+    <div class="container-fluid container-fluid--md">
+        <div class="row article-head">
+            <div class="article-head--content">
+                <h2 class="title">Downloading FAA TFR Data</h2>
+                            </div>
+        </div>
+                <div class="row article-content no-toc">
+                        <div class="article-content--body">
+                <!-- For easy conversion of HTML to JSON string, see https://www.freeformatter.com/json-escape.html-->
+                <p>I have made available a dataset of temporary flight restrictions (TFRs) issued by the Federal Aviation Administration (FAA). In all, I collected the text of 15,558 TFRs that were active between September 20, 2017 and December 21, 2021. You can also download the shapefiles for all TFRs, which can be loaded into GIS software.</p><ul><li><a href="https://faa-tfr-datasnap.s3.us-east-2.amazonaws.com/tfrData-export-memory.2021.12.22.21UTC-6.csv">Download TFR Data (.csv)</a></li><li><a href="https://faa-tfr-datasnap.s3.us-east-2.amazonaws.com/shapefiles.2021.12.22.21UTC-6.tar.gz">Download Shapefiles (.tar.gz)</a></li></ul><p>A directory of shapefiles in the .tar.gz archive can be paired with its corresponding TFR by matching the folder name with the guid column of the csv file. For more details, please see the <a href="https://github.com/michaelkotrous/tfr-data">Github project</a> or the <a href="/data/web-scraping-with-r-amazon-web-services-7eb5e27">blog post</a> documenting how I built the webscraping tool with R and AWS EC2.</p>            </div>
+            <div class="article-content--sidebar">
+                <div class="article-content--sidebar--block article-content--sidebar--detail">
+                    <h4>About</h4>
+                    <div class="article-content--sidebar--detail--content">
+                        <img src="/img/MichaelKotrous-UGA-square-web240.jpg" />
+                        By Michael Kotrous<br />
+                        <a href="http://twitter.com/MichaelKotrous" target="_blank">@MichaelKotrous</a><br />
+                        Posted Dec 26, 2021<br />
+                        10:28 p.m.                                            </div>
+                </div>
+                            </div>
+                            <div class="article-content--sidebar article-content--sidebar-sticky article-content--sidebar--block article-content--sidebar--social">
+                    <h4>Share</h4>
+                    <div class="social-icons">
+                                                <div class="social facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.michaelkotro.us%2Fposts%2Fdownloading-faa-tfr-data-e20d56a" target="_blank">Facebook</a></div> 
+                        <div class="social twitter"><a href="https://twitter.com/intent/tweet?text=Downloading+FAA+TFR+Data&url=https%3A%2F%2Fwww.michaelkotro.us%2Fposts%2Fdownloading-faa-tfr-data-e20d56a" target="_blank">Twitter</a></div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+    <section id="article-afterward">
+        <div class="article-list">
+            <div class="container-fluid container-fluid--md">
+                                <div class="row">
+                    <div class="cards-wrapper">
+                                            <div class="article-list--item article-list--item-card">
+                            <div class="card repo">
+                                <div class="card--content">
+                                                                        <h3 class="card--content--title"><a href="https://github.com/michaelkotrous/tfr-data" target="_blank">tfr-data</a></h3>
+                                    <p class="card--content--summary">Web scraping tool for collecting FAA Temporary Flight Restrictions data</p>
+                                    <div class="card--content--details repo--languages">
+                                                                                                                                    <span class="r">R</span>
+                                                                                            <span class="shell">Shell</span>
+                                                                                                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="article-list--item article-list--item-card">
+                            <div class="card article">
+                                <div class="card--content">
+                                                                        <h3 class="card--content--title"><a href="/data/web-scraping-with-r-amazon-web-services-7eb5e27">Web Scraping with R &amp; Amazon Web Services</a></h3>
+                                    <p class="card--content--summary">Setting up an R-based web scaper on an AWS EC2 instance</p>
+                                    <div class="card--content--details">
+                                         
+                                            <span class="date">Oct 10, 2017</span>
+                                                                                                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+<footer>
+    <div class="container-fluid container-fluid--md">
+        <div class="row footer">
+            <div class="footer-content">
+                <p class="copyright">Copyright &copy; 2024 by Michael Kotrous</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

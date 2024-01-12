@@ -1,0 +1,143 @@
+/* Comments */
+.comments--list {
+    .comment {
+        margin-bottom: 15px;
+        border-bottom: 1px solid $black;
+
+        a {
+            color: var(--link-color);
+        }
+        p {
+            margin-bottom: 10px;
+        }
+
+        h4 {
+            display: inline-block;
+            margin-right: 5px;
+            font-family: "Arial", sans-serif;
+            font-weight: 700;
+        }
+        .timestamp {
+            display: inline-block;
+            font-size: 0.778rem;
+        }
+
+        .replies {
+            padding-left: 30px;
+            border-left: 1px solid $black;
+
+            @media (max-width: $screen-sm-min) {
+                padding-left: 20px;
+            }
+
+            .comment:last-child {
+                border-bottom: 0px none;
+            }
+        }
+    }
+}
+
+form {
+    * {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .form-input {
+        margin-bottom: 15px;
+
+        label {
+            display: inline-block;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: right;
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 5px 8px;
+            max-width: 100%;
+            font-family: "Arial", sans-serif;
+            font-size: 1rem;
+            border: 2px solid $black;
+            border-radius: 0px;
+            transition: 0.2s;
+
+            &:focus {
+                outline: none;
+                border-color: darken($black, 20%);
+            }
+        }
+        input[type="submit"] {
+            appearance: none;
+            padding: 5px 10px;
+            font-size: 1rem;
+            color: $white;
+            background: $accent_blue_light;
+            border: 2px solid $accent_blue_light;
+            border-radius: 0px;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &:hover,
+            &:focus {
+                background: lighten($accent_blue_light, 10%);
+                border-color: lighten($accent_blue_light, 10%);
+                outline: none;
+            }
+        }
+        .required {
+            color: red;
+        }
+
+        &.search {
+            position: relative;
+            border: 2px solid $black;
+
+            input[type="text"] {
+                display: block;
+                padding: 10px 115px 10px 15px;
+                width: 100%;
+                border: 0px none;
+            }
+            input[type="submit"] {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 100px;
+                border: 0px none;
+            }
+        }
+    }
+
+    &#comments--form {
+        .form-input {
+            @include clearfix;
+        }
+        label {
+            @include make-md-column(3);
+
+            @media (max-width: $screen-md-min) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        input[type="text"],
+        textarea {
+            @include make-md-column(9);
+
+            @media (min-width: $screen-md-min) {
+                max-width: 75%;
+            }
+
+            @media (max-width: $screen-sm-min) {
+                display: block;
+                width: 100%;
+            }
+        }
+        input[type="submit"] {
+            @include make-md-column-offset(3);
+        }
+    }
+}
