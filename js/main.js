@@ -26,6 +26,21 @@ window.onload = function() {
     toggle.addEventListener("click", changeTheme);
 }
 
+// Attach click handlers to all abstract toggles.  When clicked,
+// the `open` class on the toggle is toggled on or off, which in
+// turn controls the rotation of the arrow and the visibility of
+// the associated abstract text via the CSS defined above.
+document.addEventListener('DOMContentLoaded', function () {
+    var toggles = document.querySelectorAll('.abstract-toggle');
+    toggles.forEach(function (toggle) {
+    toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        // Toggle the 'open' class on the clicked element
+        toggle.classList.toggle('open');
+    });
+    });
+});
+
 function changeTheme() {
     var theme = document.documentElement.getAttribute('data-theme');
 
