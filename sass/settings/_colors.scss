@@ -30,6 +30,10 @@ $accent_orange_light: #f57c00;
 $link_dark: $accent_blue_dark;
 $link_light: #2a7f9e;
 
+$creamery: #D6D2C4;
+$creamery_text: #3E3A34;
+$creamery_border: #C8C2B3;
+
 $facebook: #3b5998;
 $twitter: #1da1f2;
 
@@ -74,6 +78,11 @@ $twitter: #1da1f2;
 	--text-color: #{$black};
 	--link-color: #{$link_light};
 	--inactive-text-color: #{#696969};
+	--button-bg: #{$creamery};
+	--button-text: #{$creamery_text};
+	--button-border: #{$creamery_border};
+	--button-bg-hover: #{#C9C4B5};
+	--button-text-hover: #{#2F2B26};
 }
 
 
