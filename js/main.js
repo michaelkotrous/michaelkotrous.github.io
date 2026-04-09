@@ -32,12 +32,24 @@ window.onload = function() {
 // the associated abstract text via the CSS defined above.
 document.addEventListener('DOMContentLoaded', function () {
     var toggles = document.querySelectorAll('.abstract-toggle');
+
     toggles.forEach(function (toggle) {
-    toggle.addEventListener('click', function (event) {
-        event.preventDefault();
-        // Toggle the 'open' class on the clicked element
-        toggle.classList.toggle('open');
-    });
+        toggle.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            // Toggle arrow state
+            toggle.classList.toggle('open');
+
+            // Find the parent card
+            var card = toggle.closest('.card--content');
+
+            // Find the abstract within THIS card only
+            var abstract = card.querySelector('.abstract-content');
+
+            if (abstract) {
+                abstract.classList.toggle('open');
+            }
+        });
     });
 });
 

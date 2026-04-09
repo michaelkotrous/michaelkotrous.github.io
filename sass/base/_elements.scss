@@ -20,7 +20,7 @@ img {
     align-items: center;
     gap: 0.4em;
     user-select: none;
-    color: inherit;
+    color: var(--link-color);
     text-decoration: none;
 
     /* Create a right‑pointing triangle using CSS borders */
@@ -42,12 +42,10 @@ img {
 /* Hide the abstract content by default */
 .abstract-content {
     display: none;
-    margin-top: 0.5rem;
-}
 
-/* Display the abstract content when the toggle is open */
-.abstract-toggle.open + .abstract-content {
-    display: block;
+    &.open {
+        display: block;
+    }
 }
 
 .card {
@@ -62,6 +60,10 @@ img {
     &.chart img {
         display: block;
         margin: 0 auto 10px;
+    }
+
+    &--full-width {
+        width: 100%;
     }
 
     &--content {
@@ -85,7 +87,9 @@ img {
             }
         }
     }
-    &--content--summary {
+    &--content--summary,
+    &--content--abstract-toggle,
+    &--content--abstract-content {
         margin-bottom: 5px;
     }
     &--content--links {
@@ -94,14 +98,15 @@ img {
         margin-bottom: 5px;
 
         li {
-            display: inline;
+            display: inline-flex;
             margin-right: 5px;
             //font-size: 0.9rem;
         }
     }
     &--content--details {
-        position: absolute;
-        bottom: 0;
+        /*position: absolute;
+        bottom: 0;*/
+        margin-bottom: 5px;
         font-size: 0.8rem;
         color: var(--inactive-text-color);
 
