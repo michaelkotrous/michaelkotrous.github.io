@@ -1,0 +1,12 @@
+title: Michael Kotrous
+baseurl: ""
+url: "https://www.michaelkotrous.com"
+
+sass:
+  sass_dir: sass
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
