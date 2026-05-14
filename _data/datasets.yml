@@ -1,0 +1,20 @@
+# Static dataset cards for datasets without a tutorial post page.
+# For datasets with a dedicated tutorial, create a post in _posts/ with category: data.
+
+- title: "Broadband Deployments (FCC Form 477)"
+  summary: "Semi-annual panel of U.S. Census block fixed broadband deployments and demographics from Dec. 2014 – Dec. 2019"
+  links:
+    - text: GitHub
+      url: https://github.com/michaelkotrous/form477-panels
+  languages:
+    - Stata
+
+- title: "U.S. Aviation Accidents (NTSB)"
+  summary: "National Transportation Safety Board's (NTSB) Enhanced Accident Data Management System (eADMS)"
+  links:
+    - text: GitHub
+      url: https://github.com/michaelkotrous/daedalus
+  languages:
+    - MySQL
+    - R
+    - Shell

@@ -12,53 +12,55 @@ body_class: homepage
                     <p>I've made a few datasets available for other researchers. For detailed documentation, instructions, and code for constructing the dataset, consult the linked GitHub repositories. A download link is provided if I have made the final data files available for direct download. Other datasets are available by request.</p>
                     <div class="row">
                         <div class="cards-wrapper">
+                            {% assign data_posts = site.posts | where: "category", "data" %}
+                            {% for post in data_posts %}
                             <div class="homepage-content--dev--item homepage-content--dev--item-card">
                                 <div class="card repo">
                                     <div class="card--content">
-                                        <h3 class="card--content--title">Broadband Deployments (FCC Form 477)</h3>
-                                        <p class="card--content--summary">Semi-annual panel of U.S. Census block fixed broadband deployments and demographics from Dec. 2014 - Dec. 2019</p>
+                                        <h3 class="card--content--title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                                        {% if post.summary %}<p class="card--content--summary">{{ post.summary }}</p>{% endif %}
+                                        {% if post.links %}
                                         <ul class="card--content--links">
-                                            <li><a href="https://github.com/michaelkotrous/form477-panels" target="_blank">GitHub</a></li>
+                                            {% for link in post.links %}
+                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            {% endfor %}
                                         </ul>
+                                        {% endif %}
+                                        {% if post.languages %}
                                         <div class="card--content--details repo--languages">
-                                            <span class="stata">Stata</span>
+                                            {% for lang in post.languages %}
+                                            <span class="{{ lang | downcase }}">{{ lang }}</span>
+                                            {% endfor %}
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
+                            {% endfor %}
+                            {% for dataset in site.data.datasets %}
                             <div class="homepage-content--dev--item homepage-content--dev--item-card">
                                 <div class="card repo">
                                     <div class="card--content">
-                                        <h3 class="card--content--title">Temporary Flight Restrictions (FAA)</h3>
-                                        <p class="card--content--summary">Temporary flight restrictions issued by U.S. Federal Aviation Administration between Sept. 2017 and Dec. 2021</p>
+                                        <h3 class="card--content--title">{{ dataset.title }}</h3>
+                                        {% if dataset.summary %}<p class="card--content--summary">{{ dataset.summary }}</p>{% endif %}
+                                        {% if dataset.links %}
                                         <ul class="card--content--links">
-                                            <li><a href="https://github.com/michaelkotrous/tfr-data" target="_blank">GitHub</a></li>
-                                            <li><a href="/data/downloading-faa-tfr-data-e20d56a">Download</a></li>
-                                            <li><a href="/data/web-scraping-with-r-amazon-web-services-7eb5e27">Tutorial</a></li>
+                                            {% for link in dataset.links %}
+                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            {% endfor %}
                                         </ul>
+                                        {% endif %}
+                                        {% if dataset.languages %}
                                         <div class="card--content--details repo--languages">
-                                            <span class="r">R</span>
-                                            <span class="shell">Shell</span>
+                                            {% for lang in dataset.languages %}
+                                            <span class="{{ lang | downcase }}">{{ lang }}</span>
+                                            {% endfor %}
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
-                            <div class="homepage-content--dev--item homepage-content--dev--item-card">
-                                <div class="card repo">
-                                    <div class="card--content">
-                                        <h3 class="card--content--title">U.S. Aviation Accidents (NTSB)</h3>
-                                        <p class="card--content--summary">National Transportation Safety Board's (NTSB) Enhanced Accident Data Management System (eADMS)</p>
-                                        <ul class="card--content--links">
-                                            <li><a href="https://github.com/michaelkotrous/daedalus" target="_blank">GitHub</a></li>
-                                        </ul>
-                                        <div class="card--content--details repo--languages">
-                                            <span class="mysql">MySQL</span>
-                                            <span class="r">R</span>
-                                            <span class="shell">Shell</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

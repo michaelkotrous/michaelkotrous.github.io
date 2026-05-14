@@ -53,6 +53,34 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Build "Skip Around" ToC from h2/h3 headings in the article body.
+// Runs only when #js-toc exists (post layout with toc: true).
+document.addEventListener('DOMContentLoaded', function () {
+    var tocList = document.getElementById('js-toc');
+    if (!tocList) return;
+
+    var body = document.querySelector('.article-content--body');
+    if (!body) return;
+
+    var headings = body.querySelectorAll('h2, h3');
+    headings.forEach(function (heading) {
+        if (!heading.id) {
+            heading.id = heading.textContent
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+        var li = document.createElement('li');
+        var a  = document.createElement('a');
+        a.href        = '#' + heading.id;
+        a.textContent = heading.textContent.trim();
+        if (heading.tagName === 'H3') li.style.paddingLeft = '12px';
+        li.appendChild(a);
+        tocList.appendChild(li);
+    });
+});
+
 function changeTheme() {
     var theme = document.documentElement.getAttribute('data-theme');
 
