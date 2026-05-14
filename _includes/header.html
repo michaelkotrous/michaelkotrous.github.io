@@ -1,0 +1,18 @@
+<header>
+    <div class="container-fluid container-fluid--md">
+        <div class="row header">
+            <div class="header-content">
+                <div class="toggle"><a href="#" id="theme_toggle">&#x1F4A1;</a></div>
+                <h1 class="header-content--title"><a href="/">Michael Kotrous</a></h1>
+                <div class="menu">
+                    <ul>
+                        <li{% if page.nav_section == 'research' %} class="menu-item--active"{% endif %}><a href="/research">Research</a></li>
+                        <li{% if page.nav_section == 'teaching' %} class="menu-item--active"{% endif %}><a href="/teaching">Teaching</a></li>
+                        <li{% if page.nav_section == 'data' %} class="menu-item--active"{% endif %}><a href="/data">Data</a></li>
+                        <li><a href="/uploads/Kotrous_Michael_CV.pdf" target="_blank">CV</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
