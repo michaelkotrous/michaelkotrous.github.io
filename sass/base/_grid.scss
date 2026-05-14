@@ -1,3 +1,6 @@
+@use "../settings/grid-settings" as *;
+@use "../libs/bootstrap/mixins" as *;
+
 /* Create classes for Twitter bootstrap grid for layouts */
 .container-fluid {
     &--sm {

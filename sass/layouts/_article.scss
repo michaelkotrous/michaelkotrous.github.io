@@ -1,3 +1,7 @@
+@use "../settings/colors" as *;
+@use "../settings/grid-settings" as *;
+@use "sass:color";
+
 .article-head {
     &--content--filing .category {
         + .tag {
@@ -25,8 +29,8 @@
         margin-left: 8px;
         height: 16px;
         width: 14px;
-        background: darken($accent_blue_light, 10%);
-        border: 1px solid darken($accent_blue_light, 10%);
+        background: color.adjust($accent_blue_light, $lightness: -10%);
+        border: 1px solid color.adjust($accent_blue_light, $lightness: -10%);
         transform: rotate(45deg) scale(0.714);
 
         /* Triangle */
@@ -39,7 +43,7 @@
             width: 0;
             border-style: solid;
             border-width: 9.89px 0 0 9.89px;
-            border-color: darken($accent_blue_light, 10%) transparent;
+            border-color: color.adjust($accent_blue_light, $lightness: -10%) transparent;
             transform: rotate(-45deg);
             margin-left: -4.95px;
         }

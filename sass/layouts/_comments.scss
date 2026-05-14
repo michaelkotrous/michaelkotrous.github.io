@@ -1,3 +1,8 @@
+@use "../settings/colors" as *;
+@use "../settings/grid-settings" as *;
+@use "../libs/bootstrap/mixins" as *;
+@use "sass:color";
+
 /* Comments */
 .comments--list {
     .comment {
@@ -65,7 +70,7 @@ form {
 
             &:focus {
                 outline: none;
-                border-color: darken($black, 20%);
+                border-color: color.adjust($black, $lightness: -20%);
             }
         }
         input[type="submit"] {
@@ -81,8 +86,8 @@ form {
 
             &:hover,
             &:focus {
-                background: lighten($accent_blue_light, 10%);
-                border-color: lighten($accent_blue_light, 10%);
+                background: color.adjust($accent_blue_light, $lightness: 10%);
+                border-color: color.adjust($accent_blue_light, $lightness: 10%);
                 outline: none;
             }
         }

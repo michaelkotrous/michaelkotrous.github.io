@@ -1,3 +1,6 @@
+@use "../settings/grid-settings" as *;
+@use "../libs/bootstrap/mixins" as *;
+
 /* Article List */
 .article-list--more {
     padding-top: 35px;
