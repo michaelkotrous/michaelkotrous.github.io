@@ -1,3 +1,6 @@
+@use "../settings/colors" as *;
+@use "../settings/grid-settings" as *;
+
 .article-head {
     &--content--filing .category {
         + .tag {

@@ -1,0 +1,18 @@
+// Load grid settings first — configures bootstrap variables before bootstrap-custom uses them
+@use "settings/grid-settings";
+
+// Import libraries
+@use "libs/bootstrap-custom";
+
+// Import universal styles
+@use "base/grid";
+@use "base/typography";
+@use "base/elements";
+@use "base/footer";
+@use "base/header";
+
+// Import layout-specific styles
+@use "layouts/article-list";
+@use "layouts/article";
+@use "layouts/comments";
+@use "layouts/homepage";

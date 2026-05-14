@@ -1,6 +1,9 @@
-// Bootstrap Grid Settings
-$screen-sm-min: 600px;
-$screen-md-min: 768px;
-$screen-lg-min: 1080px;
-$grid-columns: 12;
-$grid-gutter-width: 20px;
+// Bootstrap Grid Settings — configures bootstrap variables with site-specific values
+// and forwards them so partials can @use this file to access grid variables.
+@forward "../libs/bootstrap/variables" with (
+  $screen-sm: 600px,
+  $screen-md: 768px,
+  $screen-lg: 1080px,
+  $grid-gutter-width: 20px,
+  $grid-columns: 12
+);
