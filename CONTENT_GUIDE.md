@@ -1,0 +1,209 @@
+# Content Editing Guide
+
+Quick reference for the most common content updates. After any change, commit and push to `main` — GitHub Actions deploys automatically (usually done in 1–2 minutes).
+
+To preview locally before pushing:
+```
+bundle exec jekyll serve
+```
+Then open `http://localhost:4000` in a browser.
+
+---
+
+## Adding a dataset
+
+### Without a tutorial page
+
+Edit `_data/datasets.yml`. Add a new entry at the bottom (or wherever it fits logically):
+
+```yaml
+- title: "Dataset Name (Source Agency)"
+  summary: "One or two sentences describing what the dataset contains."
+  links:
+    - text: GitHub
+      url: https://github.com/michaelkotrous/your-repo
+    - text: Download
+      url: https://example.com/download
+  languages:
+    - R
+    - Stata
+```
+
+All fields except `title` and `summary` are optional. `languages` is a list; include as many as apply.
+
+### With a tutorial page
+
+This is a two-step process: create the tutorial post, then add the dataset entry to `_data/datasets.yml` with a link pointing to the post.
+
+**Step 1 — Create the post.** Add a new file to `_posts/` named `YYYY-MM-DD-your-slug.md`. The date and slug become the post URL: `/post/your-slug/`.
+
+```markdown
+---
+layout: post
+title: "Downloading XYZ Data"
+subtitle: "Optional subtitle"
+date: 2026-01-01
+category: data
+nav_section: data
+body_class: article
+toc: true
+---
+
+Your tutorial content here, written in Markdown.
+```
+
+`toc: true` adds a "Skip Around" table of contents sidebar built automatically from `##` and `###` headings. Omit it for short posts.
+
+**Step 2 — Add the dataset card.** Edit `_data/datasets.yml` and add an entry. Include a link to the post in the `links` list:
+
+```yaml
+- title: "Dataset Name (Source Agency)"
+  summary: "One or two sentences describing what the dataset contains."
+  links:
+    - text: GitHub
+      url: https://github.com/michaelkotrous/your-repo
+    - text: Tutorial
+      url: /post/your-slug/
+  languages:
+    - R
+    - Shell
+```
+
+The Data landing page is driven entirely by `_data/datasets.yml` — the tutorial post is standalone content that you link to from the card.
+
+---
+
+## Creating a course page
+
+Create a new file in `_posts/` named `YYYY-MM-DD-course-slug.md`. Use the first day of the semester (or any date that sorts correctly) as the file date — it controls the order courses appear in.
+
+```markdown
+---
+layout: post
+title: "ECON 8040 – Macroeconomics I"
+subtitle: "Fall 2026"
+date: 2026-08-14
+category: teaching
+role: teaching assistant
+institution: University of Georgia
+card_date: "Fall 2026"
+nav_section: teaching
+body_class: article
+card_links:
+  - text: Syllabus
+    url: /uploads/your-syllabus.pdf
+---
+
+Optional body content — recitation schedule, contact info, links to slides, etc.
+```
+
+**Front matter fields:**
+
+| Field | Required | Notes |
+|---|---|---|
+| `layout` | yes | Always `post` |
+| `title` | yes | Course number and name |
+| `subtitle` | no | Semester, shown beneath title on the post page |
+| `date` | yes | Controls sort order; use semester start date |
+| `category` | yes | Must be `teaching` |
+| `role` | yes | e.g. `teaching assistant`, `instructor of record` |
+| `institution` | yes | Shown on the landing page card |
+| `card_date` | yes | Semester label shown on the landing page card (e.g. `"Fall 2026"`) |
+| `nav_section` | yes | Always `teaching` |
+| `body_class` | yes | Always `article` |
+| `card_links` | no | Links rendered as buttons on the landing page card (syllabus, evaluations, etc.) |
+
+The body of the post (after the `---`) is optional. Leave it empty if there's nothing to link to yet; add a recitation schedule as the semester progresses.
+
+**Uploading slides:** Place PDFs in `uploads/econ8040/fall2026/recitation/` (or an equivalent path) and link to them in the post body:
+
+```markdown
+- August 15 – Course Overview [[slides]](/uploads/econ8040/fall2026/recitation/TA1.pdf){:target="_blank"}
+```
+
+---
+
+## Posting a new working paper
+
+Edit `_data/papers.yml`. Add a new entry near the top of the file (working papers are listed first, above works in progress):
+
+```yaml
+- type: working paper
+  title: "Your Paper Title"
+  url: /uploads/YourName_PaperSlug.pdf
+  date: "Month DD, YYYY"
+  coverart: /uploads/your-figure.png
+  coverart_alt: "Alt text describing the figure"
+  coauthors: "Coauthor Name"
+  abstract: >
+    Your abstract text here. This can span multiple lines — the `>` scalar
+    folds line breaks into spaces, so it renders as a single paragraph.
+  notes: |
+    - Previously circulated by [Organization](https://example.com){:target="_blank"}
+  links:
+    - text: Slides
+      url: /uploads/YourName_PaperSlug_Slides.pdf
+    - text: Video
+      url: https://youtu.be/your-video
+    - text: Replication package
+      url: https://github.com/michaelkotrous/your-repo
+```
+
+**Required fields:** `type`, `title`
+
+**Optional fields:**
+
+| Field | Notes |
+|---|---|
+| `url` | Link on the paper title; use a relative `/uploads/` path for PDFs or a full URL for journal pages |
+| `date` | Displayed on the card |
+| `coverart` / `coverart_alt` | Figure shown as card art |
+| `coauthors` | Markdown string; renders inline links |
+| `abstract` | Plain text; shown in a collapsible panel |
+| `notes` | Markdown list; use for media mentions, prior circulation, citations |
+| `links` | Array of `{text, url}` rendered as buttons (slides, video, replication package, etc.) |
+
+Upload the PDF to `uploads/` before pushing.
+
+---
+
+## Promoting a work in progress to a working paper
+
+Open `_data/papers.yml` and find the entry. It will look like:
+
+```yaml
+- type: work in progress
+  title: "Your Paper Title"
+  coverart: /uploads/your-figure.png
+  coverart_alt: "Alt text"
+```
+
+Change `type` to `working paper` and add the fields that now apply:
+
+```yaml
+- type: working paper
+  title: "Your Paper Title"
+  url: /uploads/YourName_PaperSlug.pdf
+  date: "Month DD, YYYY"
+  coverart: /uploads/your-figure.png
+  coverart_alt: "Alt text"
+  abstract: >
+    Abstract text here.
+  links:
+    - text: Slides
+      url: /uploads/YourName_PaperSlug_Slides.pdf
+```
+
+The entry's position in the file controls the display order within each section. Working papers and works in progress are rendered in separate sections, so you may also want to move the entry upward if you want it listed first among working papers.
+
+---
+
+## Updating a work in progress (adding coauthors, cover art, etc.)
+
+Find the entry in `_data/papers.yml` and add or edit fields in place. Works in progress only display `title`, `coverart`, and `coauthors` on the Research page, so those are the only fields worth setting before the paper is circulated.
+
+---
+
+## Deployment
+
+All changes deploy automatically via GitHub Actions when pushed to `main`. The Actions tab on GitHub shows build status. A failed build usually means a YAML syntax error in one of the `_data/` files — check indentation and quoting if the build fails.
