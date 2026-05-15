@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<section id="article">
+    <div class="container-fluid container-fluid--md">
+        <div class="row article-head">
+            <div class="article-head--content">
+                <h2 class="title">{{ page.title }}</h2>
+                {% if page.subtitle %}<h3 class="subtitle">{{ page.subtitle }}</h3>{% endif %}
+            </div>
+        </div>
+        <div class="row article-content{% unless page.toc %} no-toc{% endunless %}">
+            {% if page.toc %}
+            <div class="article-content--sidebar article-content--sidebar-sticky">
+                <div class="article-content--sidebar--block article-content--sidebar--toc">
+                    <h4>Skip Around</h4>
+                    <ol class="article-content--sidebar--block--list article-content--sidebar--toc--list" id="js-toc"></ol>
+                </div>
+            </div>
+            {% endif %}
+            <div class="article-content--body">
+                {{ content }}
+            </div>
+            {% unless page.about_sidebar == false %}
+            <div class="article-content--sidebar">
+                <div class="article-content--sidebar--block article-content--sidebar--detail">
+                    <h4>About</h4>
+                    <div class="article-content--sidebar--detail--content">
+                        <img src="/img/MichaelKotrous-UGA-square-web240.jpg" alt="Michael Kotrous" />
+                        By Michael Kotrous<br />
+                        <a href="https://x.com/MichaelKotrous" target="_blank">@MichaelKotrous</a><br />
+                        Posted {{ page.date | date: "%b %-d, %Y" }}
+                    </div>
+                </div>
+            </div>
+            {% endunless %}
+        </div>
+    </div>
+</section>
