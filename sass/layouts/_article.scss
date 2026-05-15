@@ -123,7 +123,13 @@
 
             li {
                 margin-bottom: 2px;
-            }    
+            }
+
+            ol {
+                list-style-type: lower-alpha;
+                padding-left: 18px;
+                margin-top: 2px;
+            }
         }
     }
     &--detail {

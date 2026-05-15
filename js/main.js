@@ -63,6 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!body) return;
 
     var headings = body.querySelectorAll('h2, h3');
+    var currentH2Li   = null;
+    var currentSubList = null;
+
     headings.forEach(function (heading) {
         if (!heading.id) {
             heading.id = heading.textContent
@@ -75,9 +78,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var a  = document.createElement('a');
         a.href        = '#' + heading.id;
         a.textContent = heading.textContent.trim();
-        if (heading.tagName === 'H3') li.style.paddingLeft = '12px';
         li.appendChild(a);
-        tocList.appendChild(li);
+
+        if (heading.tagName === 'H2') {
+            tocList.appendChild(li);
+            currentH2Li   = li;
+            currentSubList = null;
+        } else {
+            if (!currentSubList) {
+                currentSubList = document.createElement('ol');
+                (currentH2Li || tocList).appendChild(currentSubList);
+            }
+            currentSubList.appendChild(li);
+        }
     });
 });
 
