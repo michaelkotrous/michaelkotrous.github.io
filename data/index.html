@@ -12,31 +12,6 @@ body_class: homepage
                     <p>I've made a few datasets available for other researchers. For detailed documentation, instructions, and code for constructing the dataset, consult the linked GitHub repositories. A download link is provided if I have made the final data files available for direct download. Other datasets are available by request.</p>
                     <div class="row">
                         <div class="cards-wrapper">
-                            {% assign data_posts = site.posts | where: "category", "data" %}
-                            {% for post in data_posts %}
-                            <div class="homepage-content--dev--item homepage-content--dev--item-card">
-                                <div class="card repo">
-                                    <div class="card--content">
-                                        <h3 class="card--content--title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                                        {% if post.summary %}<p class="card--content--summary">{{ post.summary }}</p>{% endif %}
-                                        {% if post.links %}
-                                        <ul class="card--content--links">
-                                            {% for link in post.links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                        {% if post.languages %}
-                                        <div class="card--content--details repo--languages">
-                                            {% for lang in post.languages %}
-                                            <span class="{{ lang | downcase }}">{{ lang }}</span>
-                                            {% endfor %}
-                                        </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
                             {% for dataset in site.data.datasets %}
                             <div class="homepage-content--dev--item homepage-content--dev--item-card">
                                 <div class="card repo">

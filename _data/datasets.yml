@@ -9,6 +9,19 @@
   languages:
     - Stata
 
+- title: "Temporary Flight Restrictions (FAA)"
+  summary: "Temporary flight restrictions issued by FAA from Sept. 2017 to Dec. 2021"
+  links:
+    - text: Github
+      url: https://github.com/michaelkotrous/tfr-data
+    - text: Download
+      url: /post/downloading-faa-tfr-data/
+    - text: Tutorial
+      url: /post/web-scraping-with-r-amazon-web-services/
+  languages:
+    - R
+    - Shell
+
 - title: "U.S. Aviation Accidents (NTSB)"
   summary: "National Transportation Safety Board's (NTSB) Enhanced Accident Data Management System (eADMS)"
   links:
