@@ -67,8 +67,7 @@
 /* Article grid layout */
 .article-head {
     &--content {
-        @include make-md-column(8);
-        @include make-md-column-offset(2);
+        @include make-md-column(12);
     }
 }
 
@@ -77,10 +76,10 @@
         @include make-md-column(2);
     }
     &--body {
-        @include make-md-column(8);
+        @include make-md-column(10);
 
         .article-content.no-toc & {
-            @include make-md-column-offset(2);
+            @include make-md-column(12);
         }
     }
 }

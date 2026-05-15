@@ -40,14 +40,14 @@
   title: "Multi-Unit Ownership in U.S. Fast Food Franchising"
   coverart: /uploads/mcd_czstar120_establishments_2022.svg
   coverart_alt: "A map showing the ownership patterns of McDonald's establishments in the Athens, GA commuting zone"
-  coauthors: "with Peter Newberry"
+  coauthors: "Peter Newberry"
 
 - type: journal article
   title: "Broadband Speeds in Fibered US Markets: An Empirical Analysis"
   url: "https://doi.org/10.5325/jinfopoli.11.2021.0478"
   date: "2021"
   publisher: Journal of Information Policy
-  coauthors: "with James Bailey (previously circulated by [The Center for Growth and Opportunity](https://www.thecgo.org/research/broadband-speeds-in-fibered-markets-an-empirical-analysis/){:target=\"_blank\"})"
+  coauthors: "James Bailey"
   abstract: >
     Broadband deployment policies have directly subsidized fiber providers because fiber
     broadband delivers fast download speeds. This article examines whether recent fiber buildout
@@ -58,6 +58,8 @@
     low. Further, our econometric results, while not interpretable as causal relationships,
     suggest that the entry of a rival fiber operator does not explain recent increases in cable
     and aDSL speeds.
+  notes: |
+    - Previously circulated by [The Center for Growth and Opportunity](https://www.thecgo.org/research/broadband-speeds-in-fibered-markets-an-empirical-analysis/){:target=\"_blank\"}
   links:
     - text: Slides
       url: /uploads/KotrousBailey-TPRCPresentation.pdf
@@ -71,10 +73,11 @@
   url: "https://doi.org/10.1371/journal.pone.0252729"
   date: "2020"
   publisher: PLOS ONE
-  coauthors: "with James Broughel (previously circulated by the [Mercatus Center](https://www.mercatus.org/research/working-papers/benefits-coronavirus-suppression-cost-benefit-analysis-response-first-wave){:target=\"_blank\"})"
+  coauthors: "James Broughel"
   notes: |
     - Featured in [POLITICO Magazine](https://www.politico.com/news/magazine/2020/04/02/coronavirus-economy-reopen-deaths-balance-analysis-159248#1){:target="_blank"} and the [*Tribune News Service*](https://web.archive.org/web/20230118050906/https://www.centralmaine.com/2020/05/23/commentary-will-lockdowns-really-kill-more-people-than-covid-19-itself/){:target="_blank"} wire
     - Cited by the [Cato Institute](https://www.cato.org/books/economics-one-virus){:target="_blank"} and in [*International Journal of Surgery*](https://doi.org/10.1016/j.ijsu.2020.11.015){:target="_blank"}
+    - Previously circulated by the [Mercatus Center](https://www.mercatus.org/research/working-papers/benefits-coronavirus-suppression-cost-benefit-analysis-response-first-wave){:target=\"_blank\"}
   abstract: >
     This paper estimates the benefits and costs of state suppression policies to "bend the
     curve" during the initial outbreak of COVID-19 in the United States. We employ an approach
@@ -95,7 +98,7 @@
 
 - type: resting
   title: "The FCC's High-Cost Programs, Rural Broadband Penetration & Rural Broadband Service Quality"
-  coauthors: "with Brent Skorup"
+  coauthors: "Brent Skorup"
   notes: "Draft available at [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3748769){:target=\"_blank\"}"
 
 - type: other
@@ -105,8 +108,8 @@
   publisher: Mercatus Center
   coverart: /uploads/figure_1_state-level_regulatory_restrictions_-_v11_3-540.png
   coverart_alt: "State-level regulatory restriction counts"
-  coauthors: "with James Broughel and Patrick McLaughlin"
-  summary: "Regulatory restriction counts for the administrative codes of the U.S. states"
+  coauthors: "James Broughel and Patrick McLaughlin"
+  summary: "Regulatory restriction counts for the administrative codes of the U.S. states."
 
 - type: other
   title: "Airplane Speeds Have Stagnated for 40 Years"
@@ -115,17 +118,17 @@
   publisher: Mercatus Center
   coverart: /uploads/Dourado-Airspeed-chart-v1-540.jpg
   coverart_alt: "Airspeed chart"
-  coauthors: "with Eli Dourado"
-  summary: "Since 1976, aviation speeds stagnated, and even regressed"
+  coauthors: "Eli Dourado"
+  summary: "Since 1976, aviation speeds stagnated, and even regressed."
 
 - type: other
   title: "Narrowing the Rural Digital Divide with Consumer Vouchers"
   url: "https://www.mercatus.org/publications/technology-and-innovation/narrowing-rural-digital-divide-consumer-vouchers"
   date: "October 2020"
   publisher: Mercatus Center Policy Brief
-  coauthors: "with Brent Skorup"
+  coauthors: "Brent Skorup"
   notes: |
-    Featured in [*Bloomberg Law*](https://news.bloomberglaw.com/us-law-week/bringing-equitable-broadband-access-to-rural-americans){:target="_blank"}, [*Broadband Breakfast*](https://broadbandbreakfast.com/brent-skorup-and-michael-kotrous-modernize-high-cost-support-with-rural-broadband-vouchers/){:target="_blank"}, and [*Corridor Business Journal*](https://corridorbusiness.com/iowa-can-address-its-digital-divide-with-broadband-vouchers/){:target="_blank"} (Cedar Rapids, Iowa)
+    - Featured in [*Bloomberg Law*](https://news.bloomberglaw.com/us-law-week/bringing-equitable-broadband-access-to-rural-americans){:target="_blank"}, [*Broadband Breakfast*](https://broadbandbreakfast.com/brent-skorup-and-michael-kotrous-modernize-high-cost-support-with-rural-broadband-vouchers/){:target="_blank"}, and [*Corridor Business Journal*](https://corridorbusiness.com/iowa-can-address-its-digital-divide-with-broadband-vouchers/){:target="_blank"} (Cedar Rapids, Iowa)
 
 - type: other
   title: "Regulation and Net Neutrality"

@@ -27,14 +27,14 @@ body_class: homepage
                                         </h3>
                                         {% if paper.date or paper.publisher %}
                                         <div class="card--content--details">
+                                            {% if paper.coauthors %}<span class="coauthor">with {{ paper.coauthors }}</span>{% endif %}
                                             {% if paper.date %}<span class="date">{{ paper.date }}</span>{% endif %}
                                             {% if paper.publisher %}<span class="publisher">{{ paper.publisher }}</span>{% endif %}
                                         </div>
                                         {% endif %}
-                                        {% if paper.coauthors or paper.notes %}
+                                        {% if paper.notes %}
                                         <div class="card--content--summary">
-                                            {% if paper.coauthors %}{{ paper.coauthors | markdownify }}{% endif %}
-                                            {% if paper.notes %}{{ paper.notes | markdownify }}{% endif %}
+                                            {{ paper.notes | markdownify }}
                                         </div>
                                         {% endif %}
                                         {% if paper.abstract or paper.links %}
@@ -76,9 +76,9 @@ body_class: homepage
                                         <h3 class="card--content--title">
                                             {% if paper.url %}<a href="{{ paper.url }}" target="_blank">{{ paper.title }}</a>{% else %}{{ paper.title }}{% endif %}
                                         </h3>
-                                        {% if paper.coauthors %}
-                                        <p class="card--content--summary">{{ paper.coauthors | markdownify | remove: "<p>" | remove: "</p>" | strip }}</p>
-                                        {% endif %}
+                                        <div class="card--content--details">
+                                            {% if paper.coauthors %}<span class="coauthor">with {{ paper.coauthors }}</span>{% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -102,14 +102,14 @@ body_class: homepage
                                         </h3>
                                         {% if paper.date or paper.publisher %}
                                         <div class="card--content--details">
+                                            {% if paper.coauthors %}<span class="coauthor">with {{ paper.coauthors }}</span>{% endif %}
                                             {% if paper.date %}<span class="date">{{ paper.date }}</span>{% endif %}
                                             {% if paper.publisher %}<span class="publisher">{{ paper.publisher }}</span>{% endif %}
                                         </div>
                                         {% endif %}
-                                        {% if paper.coauthors or paper.notes %}
+                                        {% if paper.notes %}
                                         <div class="card--content--summary">
-                                            {% if paper.coauthors %}{{ paper.coauthors | markdownify }}{% endif %}
-                                            {% if paper.notes %}{{ paper.notes | markdownify }}{% endif %}
+                                            {{ paper.notes | markdownify }}
                                         </div>
                                         {% endif %}
                                         {% if paper.abstract or paper.links %}
@@ -146,7 +146,7 @@ body_class: homepage
                         <strong>
                             {% if paper.url %}&ldquo;<a href="{{ paper.url }}" target="_blank">{{ paper.title }}</a>&rdquo;{% else %}&ldquo;{{ paper.title }}&rdquo;{% endif %}
                         </strong>
-                        {% if paper.coauthors %} {{ paper.coauthors | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% endif %}
+                        {% if paper.coauthors %} with {{ paper.coauthors | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% endif %}
                         {% if paper.notes %} ({{ paper.notes | markdownify | remove: "<p>" | remove: "</p>" | strip }}){% endif %}
                     </p>
                     {% endfor %}
@@ -173,14 +173,15 @@ body_class: homepage
                                         </h3>
                                         {% if paper.date or paper.publisher %}
                                         <div class="card--content--details">
+                                            {% if paper.coauthors %}<span class="coauthor">with {{ paper.coauthors }}</span>{% endif %}
                                             {% if paper.date %}<span class="date">{{ paper.date }}</span>{% endif %}
                                             {% if paper.publisher %}<span class="publisher">{{ paper.publisher }}</span>{% endif %}
                                         </div>
                                         {% endif %}
-                                        {% if paper.summary or paper.coauthors %}
+
+                                        {% if paper.summary %}
                                         <p class="card--content--summary">
-                                            {% if paper.summary %}{{ paper.summary }}{% endif %}
-                                            {% if paper.coauthors %} ({{ paper.coauthors | markdownify | remove: "<p>" | remove: "</p>" | strip }}){% endif %}
+                                            {{ paper.summary }}
                                         </p>
                                         {% endif %}
                                     </div>
@@ -194,11 +195,11 @@ body_class: homepage
                     {% for paper in other_text %}
                     <p>
                         <strong>
-                            {% if paper.url %}&ldquo;<a href="{{ paper.url }}" target="_blank">{{ paper.title }}</a>&rdquo;{% else %}&ldquo;{{ paper.title }}&rdquo;{% endif %}
+                            {% if paper.url %}&ldquo;<a href="{{ paper.url }}" target="_blank">{{ paper.title }}</a>,&rdquo;{% else %}&ldquo;{{ paper.title }},&rdquo;{% endif %}
                         </strong>
-                        {% if paper.coauthors %}, {{ paper.coauthors | markdownify | remove: "<p>" | remove: "</p>" | strip }}{% endif %}
-                        {% if paper.publisher %}, <em>{{ paper.publisher }}</em>{% endif %}
-                        {% if paper.date %}, {{ paper.date }}{% endif %}
+                        {% if paper.coauthors %} with {{ paper.coauthors | markdownify | remove: "<p>" | remove: "</p>" | strip }},{% endif %}
+                        {% if paper.publisher %} <em>{{ paper.publisher }}</em>,{% endif %}
+                        {% if paper.date %} {{ paper.date }}{% endif %}
                         {% if paper.notes %}{{ paper.notes | markdownify }}{% endif %}
                     </p>
                     {% endfor %}

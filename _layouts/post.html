@@ -21,19 +21,6 @@ layout: default
             <div class="article-content--body">
                 {{ content }}
             </div>
-            {% unless page.about_sidebar == false %}
-            <div class="article-content--sidebar">
-                <div class="article-content--sidebar--block article-content--sidebar--detail">
-                    <h4>About</h4>
-                    <div class="article-content--sidebar--detail--content">
-                        <img src="/img/MichaelKotrous-UGA-square-web240.jpg" alt="Michael Kotrous" />
-                        By Michael Kotrous<br />
-                        <a href="https://x.com/MichaelKotrous" target="_blank">@MichaelKotrous</a><br />
-                        Posted {{ page.date | date: "%b %-d, %Y" }}
-                    </div>
-                </div>
-            </div>
-            {% endunless %}
         </div>
     </div>
 </section>
