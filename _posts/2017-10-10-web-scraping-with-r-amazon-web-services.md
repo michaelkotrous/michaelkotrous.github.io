@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Web Scraping with R & Amazon Web Services"
-subtitle: "A Case Study in Collecting FAA Temporary Flight Restriction (TFR) Data"
+title: "Web Scraping with R & AWS"
+subtitle: "Collecting FAA Temporary Flight Restriction (TFR) Data"
 date: 2017-10-10
 category: data
 nav_section: data
@@ -14,26 +14,8 @@ links:
 languages:
   - R
   - Shell
-image_credits:
-  - text: "Cover: Andy Stadler"
-    url: "http://xcski.com/~ptomblin/planes.txt"
+hero_ascii: heroes/web-scraping.html
 ---
-
-<div class="article-hero">
-<div class="ascii-art"><pre>
-
-                              |
-                              |
-______________________________|_______________________________
-                    ----\--||___||--/----
-                         \ :==e==: /
-                          \|  o  |/
-                           \_____/
-                           /  |  \
-                         e/   e   \e
-                         U    U    U
-</pre></div>
-</div>
 
 ## Introduction
 

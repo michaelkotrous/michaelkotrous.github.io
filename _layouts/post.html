@@ -9,6 +9,15 @@ layout: default
                 {% if page.subtitle %}<h3 class="subtitle">{{ page.subtitle }}</h3>{% endif %}
             </div>
         </div>
+        {% if page.hero_ascii %}
+        <div class="row article-hero">
+            <div class="ascii-art">{% include {{ page.hero_ascii }} %}</div>
+        </div>
+        {% elsif page.hero_image %}
+        <div class="row article-hero article-hero--image">
+            <img src="{{ page.hero_image }}" alt="{{ page.hero_image_alt | default: '' }}">
+        </div>
+        {% endif %}
         <div class="row article-content{% unless page.toc %} no-toc{% endunless %}">
             {% if page.toc %}
             <div class="article-content--sidebar article-content--sidebar-sticky">

@@ -67,8 +67,18 @@
 }
 
 .article-hero .ascii-art,
-.article-hero img {
+.article-hero--image img {
     margin-bottom: 20px;
+}
+.article-hero--image img {
+    display: block;
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+
+    @media (max-width: $screen-sm-min) {
+        height: 210px;
+    }
 }
 .article-hero .ascii-art {
     position: relative; 
