@@ -41,18 +41,12 @@
         padding-left: 6px;
     }
 
-    &--social {
-        ul {
-            list-style-type: none;
-            font-family: "Montserrat", sans-serif;
-        }
-        .emoji {
-            font-size: 1.5rem;
-            padding-right: 10px;
+    p .emoji {
+        font-size: 1.5rem;
+        padding-right: 10px;
 
-            ~ .emoji {
-                padding-left: 15px;
-            }
+        ~ .emoji {
+            padding-left: 15px;
         }
     }
 }
