@@ -12,7 +12,12 @@
 - `sass/` - SCSS source, organized into `base/`, `layouts/`, `libs/`, `settings/`
 - `css/style.scss` - SCSS entry point (imports from `sass/`)
 - `js/` - JavaScript
-- `uploads/` - PDFs, research figures, teaching materials, and homepage profile photos (profile photos in `uploads/headshot/`)
+- `uploads/` - binary assets organized by subdirectory:
+  - `cv/` - CV PDF
+  - `research/` - working papers, presentations, and research figures
+  - `teaching/` - teaching statement and portfolio PDFs
+  - `econ2105/`, `econ8040/`, `econ8050/` - course-specific materials (syllabus, recitation slides, notes, etc.)
+  - `headshot/` - homepage profile photos
 - `index.md` - homepage (uses `home` layout)
 - `research/index.html`, `teaching/index.html`, `data/index.html` - section landing pages
 
@@ -27,7 +32,7 @@
 - Reusable HTML fragments go in `_includes/`; import them with `{% include file.html %}`
 - Page-level content that varies layout goes in `_layouts/`
 - SCSS: base rules in `sass/base/`, page-specific layouts in `sass/layouts/`; use `@use`/`@forward` and `sass:math`/`sass:color` — never `@import` or legacy globals
-- `uploads/` is for binary assets (PDFs, large images) linked from content pages
+- `uploads/` is for binary assets (PDFs, large images) linked from content pages; place new assets in the appropriate subdirectory (`research/`, `teaching/`, `cv/`, or a course folder)
 - Jekyll front matter uses `layout:` to select from `_layouts/`
 - Markdown strings in data files should be rendered in templates with the `| markdownify` Liquid filter
 - Teaching and data posts use a global permalink `/post/:slug/` set in `_config.yml`
