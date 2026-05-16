@@ -64,7 +64,7 @@ To include ascii art in the post, you must
 To feature an image at the top of the post, you must
 
 1. Upload the image to `/uploads/heroes/`.
-2. Add `hero_image: /uploades/heroes/asset.png` to the post yaml. 
+2. Add `hero_image: /uploads/heroes/asset.png` to the post yaml. 
 
 When selecting an image, note that the the image will be displayed 728 pixels wide and 420 pixels tall. The image is "cropped" by CSS to trim the height of the image to maintain the size without distorting its original aspect ratio.
 
