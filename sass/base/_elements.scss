@@ -142,69 +142,6 @@ img {
     }
 }
 
-.tag {
-    display: inline-block;
-    
-    .article-content--sidebar--tags &,
-    #search & {
-        margin-right: 4px;
-        margin-bottom: 4px;
-        background-color: $accent_blue_light; 
-
-        &:last-child {
-            margin-right: 0;
-        }
-
-        a {
-            display: block;
-            padding: 2px 8px;
-        }
-    }
-}
-
-.comment-bubble {
-    display: inline-block;
-    position: relative;
-    padding: 0 4px;
-    min-width: 28px;
-    color: $accent_purple_light;
-    background: $white;
-    border: 1px solid $accent_purple_light;
-    transition: 0.2s;
-
-    &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -7px;
-        left: 15px;
-        width: 0;
-        border-style: solid;
-        border-width: 6px 0 0 8px;
-        border-color: $accent_purple_light transparent;
-    }
-    &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        bottom: -6px;
-        left: 16px;
-        width: 0;
-        border-style: solid;
-        border-width: 6px 0 0 6px;
-        border-color: $white transparent;
-        transition: inherit;
-    }
-
-    &:hover {
-        color: $white;
-        background: $accent_purple_light;
-
-        &:after {
-            border-color: $accent_purple_light transparent;
-        }
-    }
-}
 
 .block {
     margin-bottom: 15px;

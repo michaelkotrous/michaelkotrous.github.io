@@ -1,70 +1,6 @@
 @use "../settings/colors" as *;
 @use "../settings/grid-settings" as *;
-@use "sass:color";
 
-.article-head {
-    &--content--filing .category {
-        + .tag {
-            position: relative;
-            margin-left: 5px;
-            padding-left: 19px;
-            
-            &:before {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                height: 18px;
-                width: 16px;
-                background: url('../img/tag-outlined-commercial-tool.png') no-repeat center center transparent;
-                background-size: 16px;
-            }
-        }
-    }
-
-    &--content--filing .icon-tag {
-        display: inline-block;
-        position: relative;
-        top: 2px;
-        margin-left: 8px;
-        height: 16px;
-        width: 14px;
-        background: color.adjust($accent_blue_light, $lightness: -10%);
-        border: 1px solid color.adjust($accent_blue_light, $lightness: -10%);
-        transform: rotate(45deg) scale(0.714);
-
-        /* Triangle */
-        &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: -6px;
-            left: 50%;
-            width: 0;
-            border-style: solid;
-            border-width: 9.89px 0 0 9.89px;
-            border-color: color.adjust($accent_blue_light, $lightness: -10%) transparent;
-            transform: rotate(-45deg);
-            margin-left: -4.95px;
-        }
-        /* Circle cutout */
-        &:after {
-            content: "";
-            height: 4px;
-            width: 4px;
-            position: absolute;
-            top: -2px;
-            left: 50%;
-            background: $white;
-            margin-left: -2px;
-            border-radius: 50%;
-        }
-    }
-
-    &--content--filing .tag {
-        font-size: 0.778rem;
-    }
-}
 
 .article-hero .ascii-art,
 .article-hero--image img {
@@ -100,9 +36,7 @@
 }
 
 .article-content--body a,
-.article-content--sidebar--toc a,
-.article-content--sidebar--detail a,
-.article-content--sidebar--image-credits a {
+.article-content--sidebar--toc a {
     color: var(--link-color);
 }
 .article-content--sidebar-sticky {    
@@ -142,14 +76,7 @@
             }
         }
     }
-    &--detail {
-        &--content img {
-            display: block; 
-            height: 60px; 
-            width: 60px; 
-            margin: 0 auto;
-        }
-    }
+
 }
 
 #article-afterward {

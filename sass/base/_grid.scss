@@ -14,10 +14,6 @@
     }
 }
 
-.full-width {
-    @include make-sm-column(12);
-}
-
 /* Base grid layout */
 .header-content {
     @include make-sm-column(12);
@@ -41,7 +37,6 @@
 .homepage-content--research,
 .homepage-content--teaching,
 .homepage-content--charts,
-.homepage-content--commentary,
 .homepage-content--dev {
     @include make-sm-column(12);
 }
@@ -53,8 +48,7 @@
 }
 
 .homepage-content--dev--item-card,
-.homepage-content--charts--item-card,
-.article-list--item-card {
+.homepage-content--charts--item-card {
     display: flex;
     width: 50%;
     padding: 0 calc($grid-gutter-width/2);
@@ -84,23 +78,4 @@
     }
 }
 
-#comments {
-    @include make-lg-column(8);
-    @include make-lg-column-offset(2);
-}
-
-.search {
-    &-head--content {
-        @include make-lg-column(8);
-        @include make-lg-column-offset(2);
-    }
-    &-content {
-        &--filters {
-            @include make-lg-column(2);
-        }
-        &--results {
-            @include make-lg-column(8);
-        }
-    }
-}
 
