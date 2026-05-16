@@ -11,7 +11,7 @@ layout: default
         </div>
         {% if page.hero_ascii %}
         <div class="row article-hero">
-            <div class="ascii-art">{% include {{ page.hero_ascii }} %}</div>
+            <div class="ascii-art"><pre>{% include {{ page.hero_ascii }} %}</pre></div>
         </div>
         {% elsif page.hero_image %}
         <div class="row article-hero article-hero--image">

@@ -54,6 +54,20 @@ Your tutorial content here, written in Markdown.
 
 `toc: true` adds a "Skip Around" table of contents sidebar built automatically from `##` and `###` headings. Omit it for short posts.
 
+To feature a large graphic below the title and content of the post, you can add `hero_ascii` or `hero_image` to the yaml in the front-matter.
+
+To include ascii art in the post, you must
+
+1. Create an HTML file in `_includes/heroes/` with the ascii art. How it looks in the IDE is how it will appear on the page, generally.
+2. Add `hero_ascii: heroes/ascii_art.html` to the post yaml.
+
+To feature an image at the top of the post, you must
+
+1. Upload the image to `/uploads/heroes/`.
+2. Add `hero_image: /uploades/heroes/asset.png` to the post yaml. 
+
+When selecting an image, note that the the image will be displayed 728 pixels wide and 420 pixels tall. The image is "cropped" by CSS to trim the height of the image to maintain the size without distorting its original aspect ratio.
+
 **Step 2 — Add the dataset card.** Edit `_data/datasets.yml` and add an entry. Include a link to the post in the `links` list:
 
 ```yaml

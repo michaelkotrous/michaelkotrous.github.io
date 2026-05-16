@@ -7,13 +7,6 @@ category: data
 nav_section: data
 body_class: article
 toc: true
-summary: "Setting up an R-based web scraper on an AWS EC2 instance"
-links:
-  - text: GitHub
-    url: https://github.com/michaelkotrous/tfr-data
-languages:
-  - R
-  - Shell
 hero_ascii: heroes/web-scraping.html
 ---
 
