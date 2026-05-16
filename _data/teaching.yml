@@ -1,5 +1,6 @@
-# Static teaching cards for courses without a standalone post page.
-# For courses with a dedicated resources page, create a post in _posts/ with category: teaching.
+# Teaching cards for courses taught as IOR and TA
+# For courses with a dedicated course webpage, create a post in _posts/ with category: teaching and
+# add link to post in card_links.
 
 - title: "Principles of Macroeconomics"
   role: instructor of record
@@ -12,3 +13,33 @@
       url: /uploads/Kotrous_ECON2105_Summer2024_Syllabus.pdf
     - text: Course Evaluations
       url: /uploads/Kotrous_ECON2105_Evaluations.pdf
+
+- title: "Macroeconomics I (Ph.D.)"
+  role: teaching assistant
+  instructor: Roozbeh Hosseini
+  institution: University of Georgia
+  card_date: "Fall 2022 &ndash; Fall 2025"
+  card_links:
+    - text: Recitation Slides
+      url: /post/econ8040-fall2025/
+
+- title: "Macroeconomics II (Ph.D.)"
+  role: teaching assistant
+  instructor: Svetlana Pashchenko
+  institution: University of Georgia
+  card_date: "Spr 2023 &ndash; Spr 2026"
+  card_links:
+    - text: Course Materials
+      url: /post/econ8050-spring2026/
+
+- title: "Senior Thesis (ECON 5900)"
+  role: teaching assistant
+  instructor: Alice Kinman
+  institution: University of Georgia
+  card_date: "Spr 2022"
+
+- title: "Principles of Microeconomics (Honors)"
+  role: teaching assistant
+  instructor: David Mustard
+  institution: University of Georgia
+  card_date: "Fall 2021 &ndash; Spr 2022"

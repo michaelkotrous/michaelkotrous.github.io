@@ -9,36 +9,23 @@ body_class: homepage
         <div class="homepage-content">
             <div class="row">
                 <div class="homepage-content--teaching">
+                    <h2>Teaching Philosophy</h2>
+                    <p>Studying economics gives students an intuitive theoretical framework for making sense of economic news, public policy, and daily life. My mission as an economics instructor is to pass on the core insights of economic theory and equip students with the skills to apply economic reasoning to their work and lives.</p>
+                    
+                    <p>Read my full <a href="/uploads/Kotrous_Michael_TeachingStatement.pdf" target="_blank">teaching statement</a> and <a href="/uploads/Kotrous_Michael_TeachingPortfolio_Short.pdf" target="_blank">evidence of teaching effectiveness</a>.</p>
+
+                    <h2>Teaching Awards</h2>
+                    <p><strong>Swift Undergraduate Teaching Fellow</strong><br/>John Munro Godfrey, Sr. Department of Economics at the University of Georgia</p>
+                    <p><strong>Outstanding Teaching Assistant Award</strong><br/>Center for Teaching and Learning at the University of Georgia</p>
+                    
                     <h2>Teaching Experience</h2>
 
                     <h3>Instructor of Record</h3>
                     <div class="row">
                         <div class="cards-wrapper">
-                            {% assign instructor_posts = site.posts | where: "category", "teaching" | where: "role", "instructor of record" %}
-                            {% for post in instructor_posts %}
-                            <div class="homepage-content--charts--item homepage-content--charts--item-card card--full-width">
-                                <div class="card chart">
-                                    <div class="card--content">
-                                        {% if post.coverart %}<img src="{{ post.coverart }}" alt="{{ post.coverart_alt }}" />{% endif %}
-                                        <h3 class="card--content--title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                                        <div class="card--content--details">
-                                            {% if post.card_date %}<span class="date">{{ post.card_date }}</span>{% endif %}
-                                            {% if post.institution %}<span class="institution">{{ post.institution }}</span>{% endif %}
-                                        </div>
-                                        {% if post.card_links %}
-                                        <ul class="card--content--links">
-                                            {% for link in post.card_links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
                             {% assign instructor_data = site.data.teaching | where: "role", "instructor of record" %}
                             {% for course in instructor_data %}
-                            <div class="homepage-content--charts--item homepage-content--charts--item-card card--full-width">
+                            <div class="homepage-content--charts--item homepage-content--charts--item-card">
                                 <div class="card chart">
                                     <div class="card--content">
                                         {% if course.coverart %}<img src="{{ course.coverart }}" alt="{{ course.coverart_alt }}" />{% endif %}
@@ -64,27 +51,6 @@ body_class: homepage
                     <h3>Teaching Assistant</h3>
                     <div class="row">
                         <div class="cards-wrapper">
-                            {% assign ta_posts = site.posts | where: "category", "teaching" | where: "role", "teaching assistant" %}
-                            {% for post in ta_posts %}
-                            <div class="homepage-content--charts--item homepage-content--charts--item-card">
-                                <div class="card">
-                                    <div class="card--content">
-                                        <h3 class="card--content--title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                                        <div class="card--content--details">
-                                            {% if post.card_date %}<span class="date">{{ post.card_date }}</span>{% endif %}
-                                            {% if post.institution %}<span class="publisher">{{ post.institution }}</span>{% endif %}
-                                        </div>
-                                        {% if post.card_links %}
-                                        <ul class="card--content--links">
-                                            {% for link in post.card_links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
                             {% assign ta_data = site.data.teaching | where: "role", "teaching assistant" %}
                             {% for course in ta_data %}
                             <div class="homepage-content--charts--item homepage-content--charts--item-card">
@@ -92,8 +58,9 @@ body_class: homepage
                                     <div class="card--content">
                                         <h3 class="card--content--title">{{ course.title }}</h3>
                                         <div class="card--content--details">
-                                            {% if course.card_date %}<span class="date">{{ course.card_date }}</span>{% endif %}
-                                            {% if course.institution %}<span class="publisher">{{ course.institution }}</span>{% endif %}
+                                            {% if course.card_date %}<span class="block date">{{ course.card_date }}</span>{% endif %}
+                                            {% if course.instructor %}<span class="block instructor">{{ course.instructor }}</span>{% endif %}
+                                            {% if course.institution %}<span class="block publisher">{{ course.institution }}</span>{% endif %}
                                         </div>
                                         {% if course.card_links %}
                                         <ul class="card--content--links">
@@ -108,18 +75,6 @@ body_class: homepage
                             {% endfor %}
                         </div>
                     </div>
-
-                    <h2>Teaching Philosophy</h2>
-                    <p>Studying economics gives students an intuitive theoretical framework for making sense of economic news, public policy, and daily life. My mission as an economics instructor is to pass on the core insights of economic theory and equip students with the skills to apply economic reasoning to their work and lives. I pursue this mission in two ways. First, I cultivate an active classroom in which students frequently test their knowledge of key concepts and practice applying economic reasoning. Second, I design assignments that connect abstract economic theories to empirical data.</p>
-
-                    <p>I have refined this approach through my experience as an instructor of record for Principles of Macroeconomics and as a Teaching Assistant for PhD-level Macroeconomic Theory. The University of Georgia recognized these efforts with the 2025 Swift Undergraduate Teaching Fellowship and the 2024&ndash;2025 Outstanding Teaching Assistant Award.</p>
-
-                    <p><strong>Read my full <a href="/uploads/Kotrous_Michael_TeachingStatement.pdf" target="_blank">teaching statement</a>.</strong></p>
-
-                    <p><strong>Read my <a href="/uploads/Kotrous_Michael_TeachingPortfolio_Short.pdf" target="_blank">evidence of teaching effectiveness</a>.</strong></p>
-
-                    <h2>Teaching Reference</h2>
-                    <p><a href="https://www.roozbeh-hosseini.com/" target="_blank">Roozbeh Hosseini</a> (roozbeh[at]uga[dot]edu)</p>
                 </div>
             </div>
         </div>
