@@ -2,7 +2,7 @@
 
 ## Project Structure
 - `_layouts/` - page templates: `default.html` (base), `home.html` (homepage), `post.html` (teaching/data posts)
-- `_includes/` - reusable HTML partials (header, footer, head)
+- `_includes/` - reusable HTML partials (header, footer, head); `heroes/` subdirectory holds ASCII art HTML files used as post hero sections
 - `_data/` - structured content:
   - `papers.yml` - research papers rendered on the Research page
   - `teaching.yml` - static teaching cards (courses without a dedicated post page)
@@ -18,6 +18,7 @@
   - `teaching/` - teaching statement and portfolio PDFs
   - `econ2105/`, `econ8040/`, `econ8050/` - course-specific materials (syllabus, recitation slides, notes, etc.)
   - `headshot/` - homepage profile photos
+  - `heroes/` - hero images for post pages (displayed at 728×420px, CSS-cropped)
 - `index.md` - homepage (uses `home` layout)
 - `research/index.html`, `teaching/index.html`, `data/index.html` - section landing pages
 
