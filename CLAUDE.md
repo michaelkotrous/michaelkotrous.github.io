@@ -12,8 +12,7 @@
 - `sass/` - SCSS source, organized into `base/`, `layouts/`, `libs/`, `settings/`
 - `css/style.scss` - SCSS entry point (imports from `sass/`)
 - `js/` - JavaScript
-- `img/` - profile photos and site images
-- `uploads/` - PDFs, research figures, and teaching materials
+- `uploads/` - PDFs, research figures, teaching materials, and homepage profile photos (profile photos in `uploads/headshot/`)
 - `index.md` - homepage (uses `home` layout)
 - `research/index.html`, `teaching/index.html`, `data/index.html` - section landing pages
 

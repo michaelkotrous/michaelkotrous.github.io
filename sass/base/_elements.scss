@@ -206,38 +206,6 @@ img {
     }
 }
 
-.social-icons {
-    text-align: center;
-    
-    .social {
-        display: inline-block;
-        margin-right: 5px;
-        height: 35px;
-        width: 35px;
-        text-indent: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        
-        a {
-            display: block;
-            height: 100%;
-            text-decoration: none;
-        }
-
-        &:last-child {
-            margin-right: 0;
-        }
-        &.facebook {
-            background: url(../img/flogo_RGB_HEX-72.png) no-repeat top left $facebook;
-            background-size: 35px 35px;
-        }
-        &.twitter {
-            background: url(../img/Twitter_Logo_WhiteOnBlue-72.png) no-repeat top left $twitter;
-            background-size: 35px 35px;
-        }
-    }
-}
-
 .block {
     margin-bottom: 15px;
 }
