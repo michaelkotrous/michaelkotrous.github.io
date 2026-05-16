@@ -10,7 +10,7 @@ profile_image_mobile: /uploads/headshot/MichaelKotrous-UGA-square-web240.jpg
 
 I am a Ph.D. candidate in the John Munro Godfrey, Sr. Department of Economics at the [University of Georgia](https://www.terry.uga.edu/directory/people/michael-kotrous){:target="_blank"}. I am an empirical IO economist with interest in labor economics, franchising, and broadband.
 
-My latest [working paper](/uploads/Kotrous_Michael_MuniBroadband.pdf){:target="_blank"} studies the effects of Chattanooga, Tennessee's municipal broadband project on its local labor market performance.
+My latest [working paper](/uploads/research/Kotrous_Michael_MuniBroadband.pdf){:target="_blank"} studies the effects of Chattanooga, Tennessee's municipal broadband project on its local labor market performance.
 
 I am also an assistant with the James C. Bonbright Center for the Study of Regulation at the University of Georgia. I was a Bastiat Fellow at the [Mercatus Center at George Mason University](https://www.mercatus.org/people/michael-kotrous){:target="_blank"}.
 
