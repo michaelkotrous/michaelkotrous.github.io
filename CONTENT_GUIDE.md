@@ -75,14 +75,14 @@ The Data landing page is driven entirely by `_data/datasets.yml` — the tutoria
 
 ## Creating a course page
 
-Create a new file in `_posts/` named `YYYY-MM-DD-course-slug.md`. Use the first day of the semester (or any date that sorts correctly) as the file date — it controls the order courses appear in.
+Create a new file in `_posts/` named `YYYY-MM-DD-course-slug.md`. The file date controls the order courses appear in. **If you're creating the page before the semester starts, use today's date** — Jekyll silently skips posts with future dates, so a Fall 2026 page created in May 2026 must use a May date, not August. The `card_date` field (e.g. `"Fall 2026"`) controls the label shown on the card independently of the file date.
 
 ```markdown
 ---
 layout: post
 title: "ECON 8040 – Macroeconomics I"
 subtitle: "Fall 2026"
-date: 2026-08-14
+date: 2026-05-16         # use today's date if the semester hasn't started yet
 category: teaching
 role: teaching assistant
 institution: University of Georgia
@@ -104,7 +104,7 @@ Optional body content — recitation schedule, contact info, links to slides, et
 | `layout` | yes | Always `post` |
 | `title` | yes | Course number and name |
 | `subtitle` | no | Semester, shown beneath title on the post page |
-| `date` | yes | Controls sort order; use semester start date |
+| `date` | yes | Controls sort order; must be today or a past date — future dates are skipped |
 | `category` | yes | Must be `teaching` |
 | `role` | yes | e.g. `teaching assistant`, `instructor of record` |
 | `institution` | yes | Shown on the landing page card |

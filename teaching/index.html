@@ -25,6 +25,13 @@ body_class: homepage
                                             {% if post.card_date %}<span class="date">{{ post.card_date }}</span>{% endif %}
                                             {% if post.institution %}<span class="institution">{{ post.institution }}</span>{% endif %}
                                         </div>
+                                        {% if post.card_links %}
+                                        <ul class="card--content--links">
+                                            {% for link in post.card_links %}
+                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -67,6 +74,13 @@ body_class: homepage
                                             {% if post.card_date %}<span class="date">{{ post.card_date }}</span>{% endif %}
                                             {% if post.institution %}<span class="publisher">{{ post.institution }}</span>{% endif %}
                                         </div>
+                                        {% if post.card_links %}
+                                        <ul class="card--content--links">
+                                            {% for link in post.card_links %}
+                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
