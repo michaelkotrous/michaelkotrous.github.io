@@ -37,7 +37,7 @@ body_class: homepage
                                         {% if course.card_links %}
                                         <ul class="card--content--links">
                                             {% for link in course.card_links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            <li><a href="{{ link.url }}"{% if link.target == "_blank" %} target="_blank" {% endif %}>{{ link.text }}</a></li>
                                             {% endfor %}
                                         </ul>
                                         {% endif %}
@@ -65,7 +65,7 @@ body_class: homepage
                                         {% if course.card_links %}
                                         <ul class="card--content--links">
                                             {% for link in course.card_links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            <li><a href="{{ link.url }}"{% if link.target == "_blank" %} target="_blank" {% endif %}>{{ link.text }}</a></li>
                                             {% endfor %}
                                         </ul>
                                         {% endif %}

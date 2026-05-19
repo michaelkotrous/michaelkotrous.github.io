@@ -6,6 +6,7 @@
   links:
     - text: GitHub
       url: https://github.com/michaelkotrous/form477-panels
+      target: _blank
   languages:
     - Stata
 
@@ -14,6 +15,7 @@
   links:
     - text: Github
       url: https://github.com/michaelkotrous/tfr-data
+      target: _blank
     - text: Download
       url: /post/downloading-faa-tfr-data/
     - text: Tutorial
@@ -27,6 +29,7 @@
   links:
     - text: GitHub
       url: https://github.com/michaelkotrous/daedalus
+      target: _blank
   languages:
     - MySQL
     - R

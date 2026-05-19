@@ -23,24 +23,24 @@ The `readHTMLTable` function turns all HTML tables found at the given URL into s
 
 This is quite convenient for cases where the data of interest is unchanging, updated infrequently, or future updates don't matter for the analysis you plan to run. Simply running the scrape once on your desktop suffices to gather the data you want. Consider these examples:
 
-- Individual medalist and country medal [counts](https://www.sports-reference.com/olympics/summer/2000/) for the 2000 Sydney Olympic Games.
-- Wins-above-replacement (WAR) leader in the AL and NL each year between 1917 and 2016. ([Baseball Reference](https://www.baseball-reference.com/leaders/WAR_bat_leagues.shtml))
-- All-time movie box office rankings, gross receipts adjusted for inflation. ([Box Office Mojo](http://www.boxofficemojo.com/alltime/adjusted.htm))
-- Weekly Apple stock prices between Jan. 1, 2005 and Dec. 31, 2012. ([Yahoo Finance](https://finance.yahoo.com/quote/AAPL/history?period1=1104555600&period2=1356930000&interval=1wk&filter=history&frequency=1wk))
+- Individual medalist and country medal [counts](https://www.olympedia.org/editions/25){:target="_blank"} for the 2000 Sydney Olympic Games.
+- Wins-above-replacement (WAR) leader in the AL and NL each year between 1917 and 2016. ([Baseball Reference](https://www.baseball-reference.com/leaders/WAR_bat_leagues.shtml){:target="_blank"})
+- All-time movie box office rankings, gross receipts adjusted for inflation. ([Box Office Mojo](http://www.boxofficemojo.com/alltime/adjusted.htm){:target="_blank"})
+- Weekly Apple stock prices between Jan. 1, 2005 and Dec. 31, 2012. ([Yahoo Finance](https://finance.yahoo.com/quote/AAPL/history?period1=1104555600&period2=1356930000&interval=1wk&filter=history&frequency=1wk){:target="_blank"})
 
 However, a more robust web scraping solution is needed when the data is updated regularly, and we would like to capture all these updates. Consider two such cases that I've encountered:
 
-- Updating daily data on home runs hit in MLB games during the ongoing season. ([ESPN Home Run Tracker](http://www.hittrackeronline.com/index.php))
-- Aggregating data on all temporary flight restrictions (TFRs) issued by the FAA. ([FAA](http://tfr.faa.gov/tfr2/list.jsp))
+- Updating daily data on home runs hit in MLB games during the ongoing season. ([Only Homers](https://www.onlyhomers.com/daily){:target="_blank"})
+- Aggregating data on all temporary flight restrictions (TFRs) issued by the FAA. ([FAA](https://tfr.faa.gov/tfr2/list.jsp){:target="_blank"})
 
 Updating the dataset manually is unrealistic, unreliable, and time-consuming, so we need to operate the web scraping scripts in an environment such that:
 
 1. the device has a persistent Internet connection, and
 2. the device can execute the web scrape and other functions automatically at specified intervals, or frequency.
 
-The specific problem I took on was running an hourly web scrape of the FAA's active TFR list. The R and Shell code I run to execute these scrapes is available in a [GitHub repo](https://github.com/michaelkotrous/tfr-data).
+The specific problem I took on was running an hourly web scrape of the FAA's active TFR list. The R and Shell code I run to execute these scrapes is available in a [GitHub repo](https://github.com/michaelkotrous/tfr-data){:target="_blank"}.
 
-The hosting solution I found was using Amazon Web Service's Elastic Cloud Computing (EC2) service. Under the [AWS free tier](https://aws.amazon.com/free/), I can run an EC2 Linux instance configured to run the web scrapes in R each hour and kick the output data to an AWS S3 bucket. All this can be done for free, or at very minimal cost.
+The hosting solution I found was using Amazon Web Service's Elastic Cloud Computing (EC2) service. Under the [AWS free tier](https://aws.amazon.com/free/){:target="_blank"}, I can run an EC2 Linux instance configured to run the web scrapes in R each hour and kick the output data to an AWS S3 bucket. All this can be done for free, or at very minimal cost.
 
 If you have not set up an AWS account, you can create one and be eligible to take advantage of the AWS free tier for 12 months!
 
@@ -59,11 +59,11 @@ In AWS EC2 console interface, you will walk through creating an EC2 instance. He
 
 ### Security Group
 
-These settings will vary greatly across users, depending on if they are hosting a web application, or using a Linux instance to compile data like I have. This [AWS blog post](https://aws.amazon.com/blogs/big-data/running-r-on-aws/) discusses using RStudio and Shiny to create data visualizations that are accessible via web browser, so that's good reference for setting up your security group if you wish to go that route.
+These settings will vary greatly across users, depending on if they are hosting a web application, or using a Linux instance to compile data like I have. This [AWS blog post](https://aws.amazon.com/blogs/big-data/running-r-on-aws/){:target="_blank"} discusses using RStudio and Shiny to create data visualizations that are accessible via web browser, so that's good reference for setting up your security group if you wish to go that route.
 
 In my case, I only allow traffic via SSH, with the IP address set to that of my personal device. If you need to access the EC2 instance from multiple devices or locations (home and office), simply create new rules of type SSH to allow multiple IP addresses to connect.
 
-### Private-Public Key Pair ([AWS Doc](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html))
+### Private-Public Key Pair ([AWS Doc](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html){:target="_blank"})
 
 Before you launch your EC2 instance, you will have generated a private-public key pair that you will be required to have when connecting to your EC2 instance (it will be downloaded with the `.pem` extension). With the key in hand, you connect to your launched EC2 instance like so:
 
@@ -94,7 +94,7 @@ $ sudo yum install -y R
 
 Henceforth, simply typing the command `R` will launch the R application, and the interface in your Terminal window will be very familiar to that of your desktop application. The same commands work, and you can write your R script just like you would in your Mac or Windows desktop environment.
 
-You'll need to install the XML, RCurl, and httr R packages manually, which are required for my [FAA TFR scrapes](https://github.com/michaelkotrous/tfr-data) and will likely be needed for yours.
+You'll need to install the XML, RCurl, and httr R packages manually, which are required for my [FAA TFR scrapes](https://github.com/michaelkotrous/tfr-data){:target="_blank"} and will likely be needed for yours.
 
 ```r
 chooseCRANmirror()

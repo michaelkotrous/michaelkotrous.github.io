@@ -11,8 +11,10 @@
   card_links:
     - text: Syllabus
       url: /uploads/econ2105/Kotrous_ECON2105_Summer2024_Syllabus.pdf
+      target: _blank
     - text: Course Evaluations
       url: /uploads/econ2105/Kotrous_ECON2105_Evaluations.pdf
+      target: _blank
 
 - title: "Macroeconomics I (Ph.D.)"
   role: teaching assistant

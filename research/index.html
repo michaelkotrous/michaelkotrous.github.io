@@ -46,7 +46,7 @@ body_class: homepage
                                             </li>
                                             {% endif %}
                                             {% for link in paper.links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            <li><a href="{{ link.url }}"{% if link.target == "_blank" %} target="_blank" {% endif %}>{{ link.text }}</a></li>
                                             {% endfor %}
                                         </ul>
                                         {% endif %}
@@ -121,7 +121,7 @@ body_class: homepage
                                             </li>
                                             {% endif %}
                                             {% for link in paper.links %}
-                                            <li><a href="{{ link.url }}" target="_blank">{{ link.text }}</a></li>
+                                            <li><a href="{{ link.url }}"{% if link.target == "_blank" %} target="_blank" {% endif %}>{{ link.text }}</a></li>
                                             {% endfor %}
                                         </ul>
                                         {% endif %}

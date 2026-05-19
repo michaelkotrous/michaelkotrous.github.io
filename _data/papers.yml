@@ -59,14 +59,17 @@
     suggest that the entry of a rival fiber operator does not explain recent increases in cable
     and aDSL speeds.
   notes: |
-    - Previously circulated by [The Center for Growth and Opportunity](https://www.thecgo.org/research/broadband-speeds-in-fibered-markets-an-empirical-analysis/){:target=\"_blank\"}
+    - Previously circulated by [The Center for Growth and Opportunity](https://www.thecgo.org/research/broadband-speeds-in-fibered-markets-an-empirical-analysis/){:target="_blank"}
   links:
     - text: Slides
       url: /uploads/research/KotrousBailey-TPRCPresentation.pdf
+      target: _blank
     - text: Video
       url: "https://youtu.be/bjMFvhriBbQ?t=40"
+      target: _blank
     - text: Replication package
       url: "https://github.com/michaelkotrous/form477-panels/tree/v.1.1.1"
+      target: _blank
 
 - type: journal article
   title: "The Benefits of Coronavirus Suppression: A Cost-Benefit Analysis of the Response to the First Wave of COVID-19 in the United States"
@@ -77,7 +80,7 @@
   notes: |
     - Featured in [POLITICO Magazine](https://www.politico.com/news/magazine/2020/04/02/coronavirus-economy-reopen-deaths-balance-analysis-159248#1){:target="_blank"} and the [*Tribune News Service*](https://web.archive.org/web/20230118050906/https://www.centralmaine.com/2020/05/23/commentary-will-lockdowns-really-kill-more-people-than-covid-19-itself/){:target="_blank"} wire
     - Cited by the [Cato Institute](https://www.cato.org/books/economics-one-virus){:target="_blank"} and in [*International Journal of Surgery*](https://doi.org/10.1016/j.ijsu.2020.11.015){:target="_blank"}
-    - Previously circulated by the [Mercatus Center](https://www.mercatus.org/research/working-papers/benefits-coronavirus-suppression-cost-benefit-analysis-response-first-wave){:target=\"_blank\"}
+    - Previously circulated by the [Mercatus Center](https://www.mercatus.org/research/working-papers/benefits-coronavirus-suppression-cost-benefit-analysis-response-first-wave){:target="_blank"}
   abstract: >
     This paper estimates the benefits and costs of state suppression policies to "bend the
     curve" during the initial outbreak of COVID-19 in the United States. We employ an approach
@@ -95,11 +98,13 @@
   links:
     - text: Summary
       url: /uploads/research/broughel-covid-cba-mercatus-summary-v1.pdf
+      target: _blank
 
 - type: resting
   title: "The FCC's High-Cost Programs, Rural Broadband Penetration & Rural Broadband Service Quality"
   coauthors: "Brent Skorup"
-  notes: "Draft available at [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3748769){:target=\"_blank\"}"
+  notes: |
+    Draft available at [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3748769){:target="_blank"}
 
 - type: other
   title: "Quantifying Regulation in U.S. States"
