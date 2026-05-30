@@ -33,6 +33,7 @@
 - Reusable HTML fragments go in `_includes/`; import them with `{% include file.html %}`
 - Page-level content that varies layout goes in `_layouts/`
 - SCSS: base rules in `sass/base/`, page-specific layouts in `sass/layouts/`; use `@use`/`@forward` and `sass:math`/`sass:color` — never `@import` or legacy globals
+- Typography uses the Adobe Source family (Source Serif 4, Source Sans 3, Source Code Pro) loaded from Google Fonts; font stacks are defined as CSS custom properties in `sass/base/_typography.scss` — use `var(--font-serif)`, `var(--font-sans)`, or `var(--font-mono)` in all new styles, never hardcode font names
 - `uploads/` is for binary assets (PDFs, large images) linked from content pages; place new assets in the appropriate subdirectory (`research/`, `teaching/`, `cv/`, or a course folder)
 - Jekyll front matter uses `layout:` to select from `_layouts/`
 - Markdown strings in data files should be rendered in templates with the `| markdownify` Liquid filter
