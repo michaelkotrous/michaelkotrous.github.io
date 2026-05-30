@@ -50,14 +50,14 @@
 .article-content--sidebar {
     &--block {
         margin-bottom: 15px;
-        font-family: "Open Sans Condensed", sans-serif;
-        font-size: 0.889rem;
+        font-family: var(--font-sans);
+        font-size: 0.72222222rem;
         text-align: center;
 
         h4 {
-            font-family: "Open Sans Condensed", sans-serif;
-            font-size: 1rem;
+            font-family: var(--font-sans);
             font-weight: 700;
+            font-size: 0.88888889rem;
             text-transform: uppercase;
         }
 

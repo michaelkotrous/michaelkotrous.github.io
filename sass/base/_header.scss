@@ -18,7 +18,7 @@ header {
 
     .menu {
         display: inline-block;
-        font-family: "Montserrat", sans-serif;
+        font-family: var(--font-sans);
         font-size: 1.1rem;
 
         body.article & {

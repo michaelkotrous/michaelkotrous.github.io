@@ -4,37 +4,41 @@
    Typography
    ----------------- */
 
+:root {
+    --font-serif: "Source Serif 4", Georgia, serif;
+    --font-sans: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "Source Code Pro", Menlo, Consolas, Monaco, monospace;
+}
+
 html,
 body { 
     margin: 0; 
     padding: 0;
     color: var(--text-color);
-    font-family: "Libre Baskerville", serif;
-    font-size: 16px; // use ems relative to 16px hereafter
-    line-height: 1.6;
+    font-family: var(--font-serif);
+    font-size: 18px; // use ems relative to 16px hereafter
+    font-weight: 400;
+    line-height: 1.4;
     background: var(--background);
 }
 
 h1,h2,h3,h4,h5,h6 { 
     margin-top: 0;
-    font-family: "Montserrat", sans-serif; 
+    font-family: var(--font-sans);
     font-weight: 700;
     color: var(--header-color);
 }
 
 .serif {
-    font-family: "Libre Baskerville", serif;
-}
-.condensed {
-    font-family: "Open Sans Condensed", sans-serif;
+    font-family: var(--font-serif);
 }
 
 pre, code {
-    font-family: "Courier New", Courier, monospace;
+    font-family: var(--font-mono);
 }
 
 table thead th {
-    font-family: "Montserrat", sans-serif; 
+    font-family: var(--font-sans);
     font-weight: 700;
     color: var(--header-color);
 }

@@ -1,7 +1,7 @@
 # Static dataset cards for datasets without a tutorial post page.
 # For datasets with a dedicated tutorial, create a post in _posts/ with category: data.
 
-- title: "Broadband Deployments (FCC Form 477)"
+- title: "Broadband Deployments (FCC)"
   summary: "Semi-annual panel of U.S. Census block fixed broadband deployments and demographics from Dec. 2014 – Dec. 2019"
   links:
     - text: GitHub
