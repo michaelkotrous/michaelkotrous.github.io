@@ -2,6 +2,21 @@
 # For courses with a dedicated course webpage, create a post in _posts/ with category: teaching and
 # add link to post in card_links.
 
+- title: "Survey of Economics (online, async)"
+  role: instructor of record
+  institution: Coastal Carolina University
+  card_date: "Fall 2026"
+
+- title: "Sports Economics"
+  role: instructor of record
+  institution: University of Georgia
+  card_date: "Fall 2026"
+
+- title: "Intermediate Macroeconomics"
+  role: instructor of record
+  institution: University of Georgia
+  card_date: "Fall 2026"
+
 - title: "Principles of Macroeconomics"
   role: instructor of record
   institution: University of Georgia
